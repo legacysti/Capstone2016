@@ -3,4 +3,10 @@
     <string name="action_settings">Settings</string>
     <string name="title_activity_food_category">Food Category</string>
     <string name="title_activity_food">food</string>
+    <string name="Fun_Category">Fun\n"translation"</string>
+    <string name="Personal_Category">Personal\n"translation"</string>
+    <string name="Activities_Category">Activities\n"translation"</string>
+    <string name="Favorites_Category">Favorites\n"translation"</string>
+    <string name="Food_Category">Food\n"translation"</string>
+    <string name="Emotions_Category">Emotions\n"translation"</string>
 </resources>

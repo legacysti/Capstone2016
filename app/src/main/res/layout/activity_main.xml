@@ -10,7 +10,7 @@
     <Button
         android:layout_width="385dp"
         android:layout_height="130dp"
-        android:text="Food&#10;Chakula"
+        android:text="@string/Food_Category"
         android:id="@+id/topLeftButton"
         android:enabled="true"
         android:clickable="true"
@@ -24,13 +24,13 @@
         android:layout_alignParentStart="false"
         android:layout_alignParentLeft="true"
         android:layout_alignParentEnd="false"
-        android:layout_marginLeft="20dp"
-        android:background="@drawable/button_layout_general_button" />
+        android:layout_marginLeft="15dp"
+        android:background="@drawable/button_food_category" />
 
     <Button
         android:layout_width="385dp"
         android:layout_height="130dp"
-        android:text="Personal&#10;Binafsi"
+        android:text="@string/Personal_Category"
         android:id="@+id/midLeftButton"
         android:layout_below="@+id/topLeftButton"
         android:layout_alignParentStart="false"
@@ -43,13 +43,15 @@
         android:clickable="true"
         android:layout_alignParentTop="false"
         android:onClick="simpleClick"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="15dp" />
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="15dp"
+        android:contextClickable="false"
+        android:elegantTextHeight="true" />
 
     <Button
         android:layout_width="385dp"
         android:layout_height="130dp"
-        android:text="Emotion&#10;Hisia"
+        android:text="@string/Emotions_Category"
         android:id="@+id/botLeftButton"
         android:enabled="true"
         android:height="175dp"
@@ -61,13 +63,13 @@
         android:layout_alignParentStart="false"
         android:layout_alignParentLeft="true"
         android:onClick="simpleClick"
-        android:layout_marginLeft="20dp"
+        android:layout_marginLeft="15dp"
         android:layout_marginTop="15dp" />
 
     <Button
         android:layout_width="385dp"
         android:layout_height="130dp"
-        android:text="Activities&#10;Shughuli"
+        android:text="@string/Activities_Category"
         android:id="@+id/topRightButton"
         android:height="175dp"
         android:width="550dp"
@@ -82,12 +84,12 @@
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
-        android:layout_marginRight="20dp" />
+        android:layout_marginRight="15dp" />
 
     <Button
         android:layout_width="385dp"
         android:layout_height="130dp"
-        android:text="Attention&#10;Kipaumbele"
+        android:text="@string/Fun_Category"
         android:id="@+id/midRightButton"
         android:height="175dp"
         android:width="550dp"
@@ -101,13 +103,13 @@
         android:layout_below="@+id/topRightButton"
         android:onClick="simpleClick"
         android:layout_alignParentRight="true"
-        android:layout_marginRight="20dp"
+        android:layout_marginRight="15dp"
         android:layout_marginTop="15dp" />
 
     <Button
         android:layout_width="385dp"
         android:layout_height="130dp"
-        android:text="Favorites"
+        android:text="@string/Favorites_Category"
         android:id="@+id/botRightButton"
         android:height="175dp"
         android:width="550dp"
@@ -121,7 +123,7 @@
         android:layout_below="@+id/midRightButton"
         android:onClick="simpleClick"
         android:layout_alignParentRight="true"
-        android:layout_marginRight="20dp"
+        android:layout_marginRight="15dp"
         android:layout_marginTop="15dp" />
 
     <Button
@@ -131,7 +133,6 @@
         android:id="@+id/yesButton"
         android:layout_alignParentBottom="true"
         android:layout_alignParentStart="false"
-        android:layout_alignParentLeft="true"
         android:enabled="true"
         android:clickable="true"
         android:width="550dp"
@@ -139,7 +140,8 @@
         android:textSize="50dp"
         android:background="@drawable/button_layout_yes_button"
         android:onClick="simpleClick"
-        android:layout_marginLeft="75dp" />
+        android:layout_marginLeft="5dp"
+        android:layout_toEndOf="@id/attentionButton" />
 
     <Button
         android:layout_width="300dp"
@@ -153,37 +155,38 @@
         android:textSize="50dp"
         android:background="@drawable/button_layout_no"
         android:layout_alignParentEnd="false"
-        android:layout_marginLeft="35dp"
         android:onClick="simpleClick"
-        android:layout_alignParentRight="true"
-        android:layout_marginRight="75dp"
-        android:layout_alignParentBottom="true" />
+        android:layout_alignParentRight="false"
+        android:layout_marginRight="5dp"
+        android:layout_alignParentBottom="true"
+        android:layout_toStartOf="@id/parentalModeButton" />
 
     <ImageButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/imageButton"
-        android:layout_alignParentTop="false"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:id="@+id/attentionButton"
         android:layout_alignParentStart="false"
-        android:background="@drawable/button_round"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentBottom="true" />
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/button_attention"
+        android:contentDescription="attention button" />
 
     <ImageButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/imageButton2"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:id="@+id/homeButton"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:background="@drawable/button_round" />
+        android:contentDescription="home button"
+        android:background="@drawable/button_home" />
 
     <ImageButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/imageButton3"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:id="@+id/parentalModeButton"
         android:layout_alignParentBottom="true"
-        android:layout_alignParentEnd="true"
+        android:layout_alignParentEnd="false"
         android:layout_alignParentRight="true"
-        android:background="@drawable/button_round" />
+        android:background="@drawable/button_parental_mode" />
 
 </RelativeLayout>
