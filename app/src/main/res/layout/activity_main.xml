@@ -75,7 +75,6 @@
         android:width="550dp"
         android:enabled="true"
         android:clickable="true"
-        android:background="@drawable/button_layout_general_button"
         android:textSize="20sp"
         android:longClickable="false"
         android:elegantTextHeight="false"
@@ -84,7 +83,8 @@
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
-        android:layout_marginRight="15dp" />
+        android:layout_marginRight="15dp"
+        android:background="@drawable/button_activities_category" />
 
     <Button
         android:layout_width="385dp"
@@ -140,8 +140,8 @@
         android:textSize="50dp"
         android:background="@drawable/button_layout_yes_button"
         android:onClick="simpleClick"
-        android:layout_marginLeft="5dp"
-        android:layout_toEndOf="@id/attentionButton" />
+        android:layout_marginLeft="75dp"
+        android:layout_alignParentLeft="true" />
 
     <Button
         android:layout_width="300dp"
@@ -156,10 +156,9 @@
         android:background="@drawable/button_layout_no"
         android:layout_alignParentEnd="false"
         android:onClick="simpleClick"
-        android:layout_alignParentRight="false"
-        android:layout_marginRight="5dp"
-        android:layout_alignParentBottom="true"
-        android:layout_toStartOf="@id/parentalModeButton" />
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="75dp"
+        android:layout_alignParentBottom="true" />
 
     <ImageButton
         android:layout_width="70dp"
