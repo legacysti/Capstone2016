@@ -115,7 +115,7 @@
         android:width="550dp"
         android:enabled="true"
         android:clickable="true"
-        android:background="@drawable/button_layout_general_button"
+        android:background="@drawable/button_favorites_category"
         android:textSize="20sp"
         android:longClickable="false"
         android:elegantTextHeight="false"
