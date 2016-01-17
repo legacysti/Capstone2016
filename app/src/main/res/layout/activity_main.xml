@@ -138,7 +138,7 @@
         android:width="550dp"
         android:height="75dp"
         android:textSize="50dp"
-        android:background="@drawable/button_layout_yes_button"
+        android:background="@drawable/button_yes"
         android:onClick="simpleClick"
         android:layout_marginLeft="110dp"
         android:layout_alignParentLeft="true" />
@@ -153,7 +153,7 @@
         android:width="550dp"
         android:height="75dp"
         android:textSize="50dp"
-        android:background="@drawable/button_layout_no"
+        android:background="@drawable/button_no"
         android:layout_alignParentEnd="false"
         android:onClick="simpleClick"
         android:layout_alignParentRight="true"

@@ -3,12 +3,13 @@
     <corners
         android:radius="14dp"
         />
+
     <gradient
         android:gradientRadius="200"
         android:centerX="50%"
         android:centerY="50%"
-        android:startColor="#E8E8E8"
-        android:endColor="#FF2E3C"
+        android:startColor="#fdba7c"
+        android:endColor="#ff6600"
         android:type="radial"
         />
     <padding
@@ -23,6 +24,6 @@
         />
     <stroke
         android:width="3dp"
-        android:color="#871880"
+        android:color="#000000"
         />
 </shape>
