@@ -115,7 +115,6 @@
         android:width="550dp"
         android:enabled="true"
         android:clickable="true"
-        android:background="@drawable/button_favorites_category"
         android:textSize="20sp"
         android:longClickable="false"
         android:elegantTextHeight="false"
@@ -124,10 +123,11 @@
         android:onClick="simpleClick"
         android:layout_alignParentRight="true"
         android:layout_marginRight="15dp"
-        android:layout_marginTop="35dp" />
+        android:layout_marginTop="35dp"
+        android:background="@drawable/button_favorites_category" />
 
     <Button
-        android:layout_width="400dp"
+        android:layout_width="450dp"
         android:layout_height="100dp"
         android:text="Yes"
         android:id="@+id/yesButton"
@@ -144,7 +144,7 @@
         android:layout_alignParentLeft="true" />
 
     <Button
-        android:layout_width="400dp"
+        android:layout_width="450dp"
         android:layout_height="100dp"
         android:text="No"
         android:id="@+id/noButton"
@@ -168,16 +168,9 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentBottom="true"
         android:background="@drawable/button_attention"
-        android:contentDescription="attention button" />
-
-    <ImageButton
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:id="@+id/homeButton"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:contentDescription="home button"
-        android:background="@drawable/button_home" />
+        android:contentDescription="attention button"
+        android:clickable="true"
+        android:nestedScrollingEnabled="false" />
 
     <ImageButton
         android:layout_width="100dp"
@@ -186,6 +179,8 @@
         android:layout_alignParentBottom="true"
         android:layout_alignParentEnd="false"
         android:layout_alignParentRight="true"
-        android:background="@drawable/button_parental_mode" />
+        android:background="@drawable/button_parental_mode"
+        android:clickable="false"
+        android:longClickable="true" />
 
 </RelativeLayout>

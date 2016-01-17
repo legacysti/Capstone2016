@@ -9,13 +9,10 @@
     tools:context="teamabraham.cerebral_palsy_communicator.foodcategory">
 
     <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="550dp"
+        android:layout_height="175dp"
         android:text="FuFu"
         android:id="@+id/topLeftButton"
-        android:height="175dp"
-        android:width="550dp"
-        android:layout_alignParentTop="true"
         android:layout_alignParentStart="false"
         android:enabled="true"
         android:clickable="true"
@@ -24,55 +21,48 @@
         android:longClickable="false"
         android:elegantTextHeight="false"
         android:singleLine="false"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentRight="false"
         android:onClick="simpleClick"
-        />
+        android:layout_marginLeft="15dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true" />
 
     <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="550dp"
+        android:layout_height="175dp"
         android:text="Pizza"
         android:id="@+id/midLeftButton"
         android:layout_below="@+id/topLeftButton"
         android:layout_alignParentStart="false"
         android:layout_marginTop="35dp"
         android:enabled="true"
-        android:height="175dp"
-        android:width="550dp"
         android:textSize="50dp"
-        android:layout_alignParentLeft="true"
         android:background="@drawable/button_layout_general_button"
         android:clickable="true"
-        android:layout_alignParentTop="false"
         android:onClick="simpleClick"
-        />
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="15dp" />
 
     <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="550dp"
+        android:layout_height="175dp"
         android:text="Pineapple&#10;Mananasi"
         android:id="@+id/botLeftButton"
         android:enabled="true"
-        android:height="175dp"
-        android:width="550dp"
         android:textSize="50dp"
         android:background="@drawable/button_layout_general_button"
         android:clickable="true"
         android:layout_below="@+id/midLeftButton"
         android:layout_alignParentStart="false"
-        android:layout_alignParentLeft="true"
         android:layout_marginTop="35dp"
         android:onClick="simpleClick"
-        />
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="15dp" />
 
     <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="550dp"
+        android:layout_height="175dp"
         android:text="Banana&#10;Ndizi"
         android:id="@+id/topRightButton"
-        android:height="175dp"
-        android:width="550dp"
         android:enabled="true"
         android:clickable="true"
         android:background="@drawable/button_layout_general_button"
@@ -80,19 +70,16 @@
         android:longClickable="false"
         android:elegantTextHeight="false"
         android:singleLine="false"
-        android:layout_toEndOf="@+id/topLeftButton"
-        android:layout_marginLeft="35dp"
         android:layout_alignParentTop="true"
         android:onClick="simpleClick"
-        />
+        android:layout_marginRight="15dp"
+        android:layout_alignParentRight="true" />
 
     <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="550dp"
+        android:layout_height="175dp"
         android:text="Drink&#10;Michanganyiko"
         android:id="@+id/midRightButton"
-        android:height="175dp"
-        android:width="550dp"
         android:enabled="true"
         android:clickable="true"
         android:background="@drawable/button_layout_general_button"
@@ -100,20 +87,17 @@
         android:longClickable="false"
         android:elegantTextHeight="false"
         android:singleLine="false"
-        android:layout_marginLeft="35dp"
-        android:layout_toEndOf="@+id/midLeftButton"
         android:layout_marginTop="35dp"
         android:layout_below="@+id/topRightButton"
         android:onClick="simpleClick"
-        />
+        android:layout_marginRight="15dp"
+        android:layout_alignParentRight="true" />
 
     <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="550dp"
+        android:layout_height="175dp"
         android:text="Casava"
         android:id="@+id/botRightButton"
-        android:height="175dp"
-        android:width="550dp"
         android:enabled="true"
         android:clickable="true"
         android:background="@drawable/button_layout_general_button"
@@ -121,48 +105,71 @@
         android:longClickable="false"
         android:elegantTextHeight="false"
         android:singleLine="false"
-        android:layout_marginLeft="35dp"
         android:layout_marginTop="35dp"
         android:layout_below="@+id/midRightButton"
-        android:layout_toEndOf="@+id/botLeftButton"
         android:onClick="simpleClick"
-        />
+        android:layout_marginRight="15dp"
+        android:layout_alignParentRight="true" />
 
     <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="400dp"
+        android:layout_height="100dp"
         android:text="Yes"
         android:id="@+id/yesButton"
-        android:layout_alignParentBottom="false"
+        android:layout_alignParentBottom="true"
         android:layout_alignParentStart="false"
         android:layout_alignParentLeft="true"
-        android:layout_below="@+id/botLeftButton"
-        android:layout_marginTop="20dp"
         android:enabled="true"
         android:clickable="true"
-        android:width="550dp"
-        android:height="75dp"
         android:textSize="50dp"
         android:background="@drawable/button_layout_yes_button"
         android:onClick="simpleClick"
-        />
+        android:layout_marginLeft="110dp" />
 
     <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="400dp"
+        android:layout_height="100dp"
         android:text="No"
         android:id="@+id/noButton"
         android:enabled="true"
         android:clickable="true"
-        android:width="550dp"
-        android:height="75dp"
         android:textSize="50dp"
         android:background="@drawable/button_layout_no"
-        android:layout_below="@+id/botRightButton"
         android:layout_alignParentEnd="false"
-        android:layout_toEndOf="@+id/yesButton"
-        android:layout_marginLeft="35dp"
-        android:layout_marginTop="20dp"
         android:onClick="simpleClick"
-        />
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="110dp" />
+
+    <ImageButton
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:id="@+id/attentionButton"
+        android:layout_alignParentStart="false"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/button_attention"
+        android:contentDescription="attention button"
+        android:clickable="true" />
+
+    <ImageButton
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:id="@+id/homeButton"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:contentDescription="home button"
+        android:background="@drawable/button_home"
+        android:clickable="true" />
+
+    <ImageButton
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:id="@+id/parentalModeButton"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="false"
+        android:layout_alignParentRight="true"
+        android:background="@drawable/button_parental_mode"
+        android:clickable="false"
+        android:longClickable="true" />
 </RelativeLayout>
