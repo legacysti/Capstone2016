@@ -15,15 +15,15 @@
         android:layout_alignParentStart="false"
         android:enabled="true"
         android:clickable="true"
-        android:background="@drawable/button_layout_general_button"
-        android:textSize="50dp"
+        android:background="@drawable/button_top_left"
         android:longClickable="false"
         android:elegantTextHeight="false"
         android:singleLine="false"
         android:onClick="simpleClick"
         android:layout_marginLeft="15dp"
         android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true" />
+        android:layout_alignParentLeft="true"
+        android:textSize="50sp" />
 
     <Button
         android:layout_width="550dp"
@@ -34,13 +34,13 @@
         android:layout_alignParentStart="false"
         android:layout_marginTop="35dp"
         android:enabled="true"
-        android:textSize="50dp"
         android:layout_alignParentLeft="true"
-        android:background="@drawable/button_layout_general_button"
+        android:background="@drawable/button_mid_left"
         android:clickable="true"
         android:layout_alignParentTop="false"
         android:onClick="simpleClick"
-        android:layout_marginLeft="15dp" />
+        android:layout_marginLeft="15dp"
+        android:textSize="50sp" />
 
     <Button
         android:layout_width="550dp"
@@ -48,15 +48,15 @@
         android:text="Im Okay&#10;Mimi nina Okay"
         android:id="@+id/botLeftButton"
         android:enabled="true"
-        android:textSize="50dp"
-        android:background="@drawable/button_layout_general_button"
+        android:background="@drawable/button_bot_left"
         android:clickable="true"
         android:layout_below="@+id/midLeftButton"
         android:layout_alignParentStart="false"
         android:layout_alignParentLeft="true"
         android:layout_marginTop="35dp"
         android:onClick="simpleClick"
-        android:layout_marginLeft="15dp" />
+        android:layout_marginLeft="15dp"
+        android:textSize="50sp" />
 
     <Button
         android:layout_width="550dp"
@@ -65,15 +65,15 @@
         android:id="@+id/topRightButton"
         android:enabled="true"
         android:clickable="true"
-        android:background="@drawable/button_layout_general_button"
-        android:textSize="50dp"
+        android:background="@drawable/button_top_right"
         android:longClickable="false"
         android:elegantTextHeight="false"
         android:singleLine="false"
         android:layout_alignParentTop="true"
         android:onClick="simpleClick"
         android:layout_marginRight="15dp"
-        android:layout_alignParentRight="true" />
+        android:layout_alignParentRight="true"
+        android:textSize="50sp" />
 
     <Button
         android:layout_width="550dp"
@@ -82,8 +82,7 @@
         android:id="@+id/midRightButton"
         android:enabled="true"
         android:clickable="true"
-        android:background="@drawable/button_layout_general_button"
-        android:textSize="50dp"
+        android:background="@drawable/button_mid_right"
         android:longClickable="false"
         android:elegantTextHeight="false"
         android:singleLine="false"
@@ -91,7 +90,8 @@
         android:layout_below="@+id/topRightButton"
         android:onClick="simpleClick"
         android:layout_marginRight="15dp"
-        android:layout_alignParentRight="true" />
+        android:layout_alignParentRight="true"
+        android:textSize="50sp" />
 
     <Button
         android:layout_width="550dp"
@@ -100,8 +100,7 @@
         android:id="@+id/botRightButton"
         android:enabled="true"
         android:clickable="true"
-        android:background="@drawable/button_layout_general_button"
-        android:textSize="50dp"
+        android:background="@drawable/button_bot_right"
         android:longClickable="false"
         android:elegantTextHeight="false"
         android:singleLine="false"
@@ -109,7 +108,8 @@
         android:layout_below="@+id/midRightButton"
         android:onClick="simpleClick"
         android:layout_alignParentRight="true"
-        android:layout_marginRight="15dp" />
+        android:layout_marginRight="15dp"
+        android:textSize="50sp" />
 
     <Button
         android:layout_width="400dp"
