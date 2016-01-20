@@ -9,4 +9,5 @@
     <string name="Favorites_Category">Favorites\n"translation"</string>
     <string name="Food_Category">Food\n"translation"</string>
     <string name="Emotions_Category">Emotions\n"translation"</string>
+    <string name="title_activity_funcategory">funcategory</string>
 </resources>

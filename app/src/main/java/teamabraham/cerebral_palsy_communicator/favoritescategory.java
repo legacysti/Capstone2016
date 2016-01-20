@@ -15,7 +15,7 @@ public class favoritescategory extends AppCompatActivity {
         if (extras != null) {
             timesPressed = extras.getInt("timesPressed");
         }
-        TextView test = (TextView)findViewById(R.id.testText);
-        test.setText(String.valueOf(timesPressed));
+        //TextView test = (TextView)findViewById(R.id.testText);
+        //test.setText(String.valueOf(timesPressed));
     }
 }
