@@ -165,8 +165,8 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:contentDescription="home button"
-        android:background="@drawable/button_home"
-        android:clickable="true" />
+        android:clickable="true"
+        android:background="@drawable/button_home" />
 
     <ImageButton
         android:layout_width="100dp"
