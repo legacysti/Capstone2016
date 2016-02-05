@@ -58,14 +58,14 @@
         android:height="175dp"
         android:width="550dp"
         android:textSize="20sp"
-        android:background="@drawable/button_emotions_category"
         android:clickable="true"
         android:layout_below="@+id/midLeftButton"
         android:layout_alignParentStart="false"
         android:layout_alignParentLeft="true"
         android:onClick="simpleClick"
         android:layout_marginLeft="15dp"
-        android:layout_marginTop="35dp" />
+        android:layout_marginTop="35dp"
+        android:background="@drawable/button_emotions_category" />
 
     <Button
         android:layout_width="550dp"
@@ -139,10 +139,10 @@
         android:width="550dp"
         android:height="75dp"
         android:textSize="50dp"
-        android:background="@drawable/button_yes"
         android:onClick="simpleClick"
         android:layout_marginLeft="110dp"
-        android:layout_alignParentLeft="true" />
+        android:layout_alignParentLeft="true"
+        android:background="@drawable/button_yes" />
 
     <Button
         android:layout_width="450dp"
