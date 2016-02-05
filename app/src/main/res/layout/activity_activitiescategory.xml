@@ -155,9 +155,9 @@
         android:layout_alignParentStart="false"
         android:layout_alignParentLeft="true"
         android:layout_alignParentBottom="true"
-        android:background="@drawable/button_attention"
         android:contentDescription="attention button"
-        android:clickable="true" />
+        android:clickable="true"
+        android:background="@drawable/button_attention" />
 
     <ImageButton
         android:layout_width="100dp"
@@ -176,6 +176,5 @@
         android:layout_alignParentBottom="true"
         android:layout_alignParentEnd="false"
         android:layout_alignParentRight="true"
-        android:background="@drawable/button_parental_mode"
         android:longClickable="true" />
 </RelativeLayout>
