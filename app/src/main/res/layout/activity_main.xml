@@ -154,12 +154,12 @@
         android:width="550dp"
         android:height="75dp"
         android:textSize="50dp"
-        android:background="@drawable/button_no"
         android:layout_alignParentEnd="false"
         android:onClick="simpleClick"
         android:layout_alignParentRight="true"
         android:layout_marginRight="110dp"
-        android:layout_alignParentBottom="true" />
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/button_no" />
 
     <ImageButton
         android:layout_width="100dp"
