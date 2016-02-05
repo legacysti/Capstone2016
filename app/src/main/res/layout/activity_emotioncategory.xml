@@ -176,5 +176,6 @@
         android:layout_alignParentEnd="false"
         android:layout_alignParentRight="true"
         android:clickable="false"
-        android:longClickable="true" />
+        android:longClickable="true"
+        android:background="@drawable/button_parental_mode" />
 </RelativeLayout>
