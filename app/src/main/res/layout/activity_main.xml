@@ -44,7 +44,7 @@
         android:layout_alignParentTop="false"
         android:onClick="simpleClick"
         android:layout_marginLeft="15dp"
-        android:layout_marginTop="35dp"
+        android:layout_marginTop="25dp"
         android:contextClickable="false"
         android:elegantTextHeight="true"
         android:background="@drawable/button_personal_category" />
@@ -64,7 +64,7 @@
         android:layout_alignParentLeft="true"
         android:onClick="simpleClick"
         android:layout_marginLeft="15dp"
-        android:layout_marginTop="35dp"
+        android:layout_marginTop="25dp"
         android:background="@drawable/button_emotions_category" />
 
     <Button
@@ -104,7 +104,7 @@
         android:onClick="simpleClick"
         android:layout_alignParentRight="true"
         android:layout_marginRight="15dp"
-        android:layout_marginTop="35dp"
+        android:layout_marginTop="25dp"
         android:background="@drawable/button_fun_category" />
 
     <Button
@@ -124,7 +124,7 @@
         android:onClick="simpleClick"
         android:layout_alignParentRight="true"
         android:layout_marginRight="15dp"
-        android:layout_marginTop="35dp"
+        android:layout_marginTop="25dp"
         android:background="@drawable/button_favorites_category" />
 
     <Button
