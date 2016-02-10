@@ -1,5 +1,6 @@
 package teamabraham.cerebral_palsy_communicator;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.media.MediaPlayer;
 import android.net.Uri;
@@ -18,12 +19,16 @@ public class MainActivity extends AppCompatActivity {
     public MediaPlayer mp = new MediaPlayer();
     Button yesButton;
     Button noButton;
+    int timesPressed;
     public ArrayList<Button> buttons = new ArrayList<Button>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        Bundle extras = getIntent().getExtras();
+        if (extras != null) {
+            timesPressed = extras.getInt("timesPressed");
+        }
 
 
         Button leftTop = (Button)findViewById(R.id.topLeftButton);
@@ -43,12 +48,6 @@ public class MainActivity extends AppCompatActivity {
         noButton = (Button)findViewById(R.id.noButton);
         buttons.add(noButton);
 
-        leftTop.setBackgroundColor(Color.GREEN);
-        rightTop.setBackgroundColor(Color.GREEN);
-        leftMid.setBackgroundColor(Color.GREEN);
-        rightMid.setBackgroundColor(Color.GREEN);
-        leftBot.setBackgroundColor(Color.GREEN);
-        rightBot.setBackgroundColor(Color.GREEN);
     }
 
     @Override
@@ -74,128 +73,81 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void simpleClick(View view){
-
+        Intent newActivity = null;
         final Button pressed = (Button)view;
-        for (int i = 0; i < buttons.size(); i++) {
-           if(buttons.get(i) != pressed){
-               buttons.get(i).setEnabled(false);
-           }
-        }
+//        for (int i = 0; i < buttons.size(); i++) {
+//           if(buttons.get(i) != pressed){
+//               buttons.get(i).setEnabled(false);
+//           }
+//        }
 
-        if(!mp.isPlaying()) {
-            if(pressed != yesButton && pressed != noButton) {
-                pressed.setBackgroundColor(Color.RED);
-            }
-            switch (view.getId()) {
-                case R.id.topLeftButton:
-                    try {
-                        mp.reset();
-                        Uri clapString = Uri.parse("android.resource://" + getPackageName() + "/" + R.raw.clap);
-                        mp.setDataSource(getApplicationContext(), clapString);
-                        mp.prepare();
-                        mp.start();
-                    } catch (IOException e) {
+        switch (view.getId()) {
+            case R.id.topLeftButton:
+                newActivity = new Intent(this, foodcategory.class);
 
-                    }
-                    break;
-                case R.id.topRightButton:
-                    try {
-                        mp.reset();
-                        Uri clapString = Uri.parse("android.resource://" + getPackageName() + "/" + R.raw.tada);
-                        mp.setDataSource(getApplicationContext(), clapString);
-                        mp.prepare();
-                        mp.start();
-                    } catch (IOException e) {
+                break;
+            case R.id.topRightButton:
+                newActivity = new Intent(this, activitiescategory.class);
+                break;
+            case R.id.midLeftButton:
+                newActivity = new Intent(this, personalcategory.class);
+                break;
+            case R.id.midRightButton:
+                newActivity = new Intent(this, funcategory.class);
+                break;
+            case R.id.botLeftButton:
+                newActivity = new Intent(this, emotioncategory.class);
+                break;
+            case R.id.botRightButton:
+                newActivity = new Intent(this, favoritescategory.class);
+                newActivity.putExtra("timesPressed", timesPressed);
+                break;
+            case R.id.yesButton:
+                try {
+                    mp.reset();
+                    Uri clapString = Uri.parse("android.resource://" + getPackageName() + "/" + R.raw.yes);
+                    mp.setDataSource(getApplicationContext(), clapString);
+                    mp.prepare();
+                    mp.start();
+                } catch (IOException e) {
 
-                    }
-                    break;
-                case R.id.midLeftButton:
-                    try {
-                        mp.reset();
-                        Uri clapString = Uri.parse("android.resource://" + getPackageName() + "/" + R.raw.car);
-                        mp.setDataSource(getApplicationContext(), clapString);
-                        mp.prepare();
-                        mp.start();
-                    } catch (IOException e) {
-
-                    }
-                    break;
-                case R.id.midRightButton:
-                    try {
-                        mp.reset();
-                        Uri clapString = Uri.parse("android.resource://" + getPackageName() + "/" + R.raw.meeseeks);
-                        mp.setDataSource(getApplicationContext(), clapString);
-                        mp.prepare();
-                        mp.start();
-                    } catch (IOException e) {
-
-                    }
-                    break;
-                case R.id.botLeftButton:
-                    try {
-                        mp.reset();
-                        Uri clapString = Uri.parse("android.resource://" + getPackageName() + "/" + R.raw.pizza);
-                        mp.setDataSource(getApplicationContext(), clapString);
-                        mp.prepare();
-                        mp.start();
-                    } catch (IOException e) {
-
-                    }
-                    break;
-                case R.id.botRightButton:
-                    try {
-                        mp.reset();
-                        Uri clapString = Uri.parse("android.resource://" + getPackageName() + "/" + R.raw.caught);
-                        mp.setDataSource(getApplicationContext(), clapString);
-                        mp.prepare();
-                        mp.start();
-                    } catch (IOException e) {
-
-                    }
-                    break;
-                case R.id.yesButton:
-                    try {
-                        mp.reset();
-                        Uri clapString = Uri.parse("android.resource://" + getPackageName() + "/" + R.raw.yes);
-                        mp.setDataSource(getApplicationContext(), clapString);
-                        mp.prepare();
-                        mp.start();
-                    } catch (IOException e) {
-
-                    }
-                    break;
-                case R.id.noButton:
-                    try {
-                        mp.reset();
-                        Uri clapString = Uri.parse("android.resource://" + getPackageName() + "/" + R.raw.no);
-                        mp.setDataSource(getApplicationContext(), clapString);
-                        mp.prepare();
-                        mp.start();
-                    } catch (IOException e) {
-
-                    }
-                    break;
-                default:
-
-            }
-        }
-
-        mp.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-            @Override
-            public void onCompletion(MediaPlayer mediaPlayer) {
-                mediaPlayer.reset();
-                for (int i = 0; i < buttons.size(); i++) {
-                    if(buttons.get(i) != pressed){
-                        buttons.get(i).setEnabled(true);
-                    }
                 }
-                if(pressed != yesButton && pressed != noButton) {
-                    pressed.setBackgroundColor(Color.GREEN);
+                break;
+            case R.id.noButton:
+                try {
+                    mp.reset();
+                    Uri clapString = Uri.parse("android.resource://" + getPackageName() + "/" + R.raw.no);
+                    mp.setDataSource(getApplicationContext(), clapString);
+                    mp.prepare();
+                    mp.start();
+                } catch (IOException e) {
+
                 }
-            }
-        });
+                break;
+            default:
 
-
+        }
+        if(newActivity != null) {
+            startActivity(newActivity);
+        }
+//        }
+//
+//        mp.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+//            @Override
+//            public void onCompletion(MediaPlayer mediaPlayer) {
+//                mediaPlayer.reset();
+//                for (int i = 0; i < buttons.size(); i++) {
+//                    if(buttons.get(i) != pressed){
+//                        buttons.get(i).setEnabled(true);
+//                    }
+//                }
+//                if(pressed != yesButton && pressed != noButton) {
+//                    pressed.setBackgroundColor(Color.GREEN);
+//                }
+//            }
+//        });
+//
+//
     }
 
 }
