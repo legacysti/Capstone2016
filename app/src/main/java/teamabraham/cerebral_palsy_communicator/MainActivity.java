@@ -102,11 +102,7 @@ public class MainActivity extends AppCompatActivity {
         } else {
             final Button pressed = (Button) view;
         }
-//        for (int i = 0; i < buttons.size(); i++) {
-//           if(buttons.get(i) != pressed){
-//               buttons.get(i).setEnabled(false);
-//           }
-//        }
+
 
         switch (view.getId()) {
             case R.id.topLeftButton:
@@ -162,7 +158,7 @@ public class MainActivity extends AppCompatActivity {
             case R.id.attentionButton:
                 try {
                     mp.reset();
-                    Uri clapString = Uri.parse("android.resource://" + getPackageName() + "/" + R.raw.no);
+                    Uri clapString = Uri.parse("android.resource://" + getPackageName() + "/" + R.raw.attention);
                     mp.setDataSource(getApplicationContext(), clapString);
                     mp.prepare();
                     mp.start();
