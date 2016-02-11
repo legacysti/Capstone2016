@@ -114,6 +114,7 @@
         android:layout_alignParentBottom="true"
         android:background="@drawable/button_attention"
         android:contentDescription="attention button"
+        android:onClick="simpleClick"
         android:clickable="true" />
 
     <ImageButton
