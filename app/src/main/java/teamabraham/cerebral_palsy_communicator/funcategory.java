@@ -15,42 +15,38 @@ import android.widget.TextView;
 
 public class funcategory extends AppCompatActivity {
 
-    String videoList;
+    String video;
     Intent newActivity;
     ImageButton parentalMode;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_funcategory);
-        videoList = "";
+        video = "";
         newActivity = null;
         final Context thisActivity = this;
 
         parentalMode = (ImageButton) findViewById(R.id.parentalModeButton);
+        newActivity = new Intent(this, youtubeactivity.class);
         parentalMode.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
                 final AlertDialog.Builder builder = new AlertDialog.Builder(thisActivity);
-                builder.setTitle("Enter Keyword to search for");
+                builder.setTitle("Enter URL Key:");
 
                 final EditText input = new EditText(thisActivity);
-                final TextView list = new TextView(thisActivity);
 
                 builder.setView(input);
 
                 builder.setPositiveButton("Add", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        /*
-                        videoList = input.getText().toString();
-                        list.setText(videoList);
-                        builder.setView(list);
+                        video = input.getText().toString();
 
                         if(newActivity != null) {
+                            newActivity.putExtra("url", video);
                             startActivity(newActivity);
                         }
-                        */
-
                     }
                 });
 
@@ -72,7 +68,7 @@ public class funcategory extends AppCompatActivity {
         switch(v.getId()){
             case R.id.topLeftButton:
                 newActivity = new Intent(this, youtubeactivity.class);
-
+                startActivity(newActivity);
 
 
             break;

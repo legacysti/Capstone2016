@@ -22,12 +22,16 @@ public class youtubeactivity extends YouTubeBaseActivity implements YouTubePlaye
     public static final String YOUTUBE_API_KEY = "AIzaSyCG98Yngx6dAWm7gJC2ks68JjwBxQOTp3g";
     private MyPlayerStateChangeListener playerStateChangeListener;
     private MyPlaybackEventListener playbackEventListener;
-
+    private String video;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_youtube);
-
+        Bundle extras = getIntent().getExtras();
+        video = "YLorLVa95Xo";
+        if (extras != null) {
+            video = extras.getString("url");
+        }
         playerStateChangeListener = new MyPlayerStateChangeListener();
         playbackEventListener = new MyPlaybackEventListener();
         youTubeView = (YouTubePlayerView) findViewById(R.id.youtube_view);
@@ -42,7 +46,7 @@ public class youtubeactivity extends YouTubeBaseActivity implements YouTubePlaye
         this.ytPlayer = player;
         ytPlayer.setPlayerStyle(YouTubePlayer.PlayerStyle.DEFAULT);
         if (!wasRestored) {
-            player.loadVideo("fhWaJi1Hsfo"); // Plays https://www.youtube.com/watch?v=fhWaJi1Hsfo
+            player.loadVideo(video);
         }
 
     }
@@ -53,7 +57,7 @@ public class youtubeactivity extends YouTubeBaseActivity implements YouTubePlaye
             errorReason.getErrorDialog(this, RECOVERY_REQUEST).show();
         } else {
             String error = String.format(getString(R.string.player_error), errorReason.toString());
-            Toast.makeText(this, error, Toast.LENGTH_LONG).show();
+            Toast.makeText(this, error, Toast.LENGTH_SHORT).show();
         }
     }
 
