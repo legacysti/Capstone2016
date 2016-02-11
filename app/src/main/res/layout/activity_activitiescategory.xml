@@ -166,6 +166,7 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:contentDescription="home button"
+        android:onClick="onHomeClick"
         android:background="@drawable/button_home"
         android:clickable="true" />
 
