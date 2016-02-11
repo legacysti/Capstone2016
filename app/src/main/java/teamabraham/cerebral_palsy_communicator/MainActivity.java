@@ -10,6 +10,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -21,6 +22,7 @@ public class MainActivity extends AppCompatActivity {
     Button noButton;
     int timesPressed;
     public ArrayList<Button> buttons = new ArrayList<Button>();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,25 +32,46 @@ public class MainActivity extends AppCompatActivity {
             timesPressed = extras.getInt("timesPressed");
         }
 
-
-        Button leftTop = (Button)findViewById(R.id.topLeftButton);
+        Button leftTop = (Button) findViewById(R.id.topLeftButton);
         buttons.add(leftTop);
-        Button rightTop = (Button)findViewById(R.id.topRightButton);
+        Button rightTop = (Button) findViewById(R.id.topRightButton);
         buttons.add(rightTop);
-        Button leftMid = (Button)findViewById(R.id.midLeftButton);
+        Button leftMid = (Button) findViewById(R.id.midLeftButton);
         buttons.add(leftMid);
-        Button rightMid = (Button)findViewById(R.id.midRightButton);
+        Button rightMid = (Button) findViewById(R.id.midRightButton);
         buttons.add(rightMid);
-        Button leftBot = (Button)findViewById(R.id.botLeftButton);
+        Button leftBot = (Button) findViewById(R.id.botLeftButton);
         buttons.add(leftBot);
-        Button rightBot = (Button)findViewById(R.id.botRightButton);
+        Button rightBot = (Button) findViewById(R.id.botRightButton);
         buttons.add(rightBot);
-        yesButton = (Button)findViewById(R.id.yesButton);
+        yesButton = (Button) findViewById(R.id.yesButton);
         buttons.add(yesButton);
-        noButton = (Button)findViewById(R.id.noButton);
+        noButton = (Button) findViewById(R.id.noButton);
         buttons.add(noButton);
 
-    }
+        ImageButton attentionButton = (ImageButton)findViewById(R.id.attentionButton);
+
+//    public void addListenerOnButton() {
+//        ImageButton attentionButton = (ImageButton)findViewById(R.id.attentionButton);
+//        attentionButton.setOnClickListener(new View.OnClickListener() {
+//
+//            public void onClick() {
+//                try {
+//                    mp.reset();
+//                    Uri clapString = Uri.parse("android.resource://" + getPackageName() + "/" + R.raw.no);
+//                    mp.setDataSource(getApplicationContext(), clapString);
+//                    mp.prepare();
+//                    mp.start();
+//                } catch (IOException e) {
+//
+//                }
+//
+//
+////                Intent intent = new Intent(MainActivity.this, Numbers.class);
+////                startActivity(intent);
+//            }
+//        });
+}
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -74,7 +97,11 @@ public class MainActivity extends AppCompatActivity {
 
     public void simpleClick(View view){
         Intent newActivity = null;
-        final Button pressed = (Button)view;
+        if(view.getId() == R.id.attentionButton) {
+            final ImageButton pressed = (ImageButton) view;
+        } else {
+            final Button pressed = (Button) view;
+        }
 //        for (int i = 0; i < buttons.size(); i++) {
 //           if(buttons.get(i) != pressed){
 //               buttons.get(i).setEnabled(false);
@@ -132,6 +159,17 @@ public class MainActivity extends AppCompatActivity {
 
                 }
                 break;
+            case R.id.attentionButton:
+                try {
+                    mp.reset();
+                    Uri clapString = Uri.parse("android.resource://" + getPackageName() + "/" + R.raw.no);
+                    mp.setDataSource(getApplicationContext(), clapString);
+                    mp.prepare();
+                    mp.start();
+                } catch (IOException e) {
+
+                }
+
             default:
 
         }
