@@ -1,5 +1,6 @@
 package teamabraham.cerebral_palsy_communicator;
 
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.media.MediaPlayer;
@@ -10,6 +11,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -20,6 +22,7 @@ public class MainActivity extends AppCompatActivity {
     Button yesButton;
     Button noButton;
     int timesPressed;
+    String funCategory, activeCategory,emotionCategory, personalCategory, foodCategory = "";
     public ArrayList<Button> buttons = new ArrayList<Button>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,9 +30,19 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
-            timesPressed = extras.getInt("timesPressed");
+            funCategory = extras.getString("funCat");
+            activeCategory = extras.getString("actCat");
+            emotionCategory = extras.getString("emoCat");
+            personalCategory = extras.getString("perCat");
+            foodCategory = extras.getString("fooCat");
         }
-
+//        Intent i = new Intent(getApplicationContext(), favoritescategory.class);
+//        i.putExtra("funCat", funCategory);
+//        i.putExtra("actCat", activeCategory);
+//        i.putExtra("emoCat", emotionCategory);
+//        i.putExtra("perCat", personalCategory);
+//        i.putExtra("fooCat", foodCategory);
+//        startActivity(i);
 
         Button leftTop = (Button)findViewById(R.id.topLeftButton);
         buttons.add(leftTop);
@@ -84,7 +97,12 @@ public class MainActivity extends AppCompatActivity {
         switch (view.getId()) {
             case R.id.topLeftButton:
                 newActivity = new Intent(this, foodcategory.class);
+                Context context = getApplicationContext();
+                CharSequence text = "Hello toast!";
+                int duration = Toast.LENGTH_SHORT;
 
+                Toast toast = Toast.makeText(context, foodCategory, duration);
+                toast.show();
                 break;
             case R.id.topRightButton:
                 newActivity = new Intent(this, activitiescategory.class);
@@ -109,6 +127,11 @@ public class MainActivity extends AppCompatActivity {
             case R.id.botRightButton:
                 newActivity = new Intent(this, favoritescategory.class);
                 newActivity.putExtra("timesPressed", timesPressed);
+                newActivity.putExtra("funCat", funCategory);
+                newActivity.putExtra("actCat", activeCategory);
+                newActivity.putExtra("emoCat", emotionCategory);
+                newActivity.putExtra("perCat", personalCategory);
+                newActivity.putExtra("fooCat", foodCategory);
                 break;
             case R.id.yesButton:
                 try {
