@@ -5,7 +5,7 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:paddingBottom="@dimen/activity_vertical_margin"
-    android:background="#C390D4"
+    android:background="@drawable/personal_background"
     tools:context="teamabraham.cerebral_palsy_communicator.personalcategory">
     <Button
         android:layout_width="550dp"
@@ -32,7 +32,7 @@
         android:id="@+id/midLeftButton"
         android:layout_below="@+id/topLeftButton"
         android:layout_alignParentStart="false"
-        android:layout_marginTop="35dp"
+        android:layout_marginTop="25dp"
         android:enabled="true"
         android:layout_alignParentLeft="true"
         android:background="@drawable/button_mid_left"
@@ -53,7 +53,7 @@
         android:layout_below="@+id/midLeftButton"
         android:layout_alignParentStart="false"
         android:layout_alignParentLeft="true"
-        android:layout_marginTop="35dp"
+        android:layout_marginTop="25dp"
         android:onClick="simpleClick"
         android:layout_marginLeft="15dp"
         android:textSize="50sp" />
@@ -86,7 +86,7 @@
         android:longClickable="false"
         android:elegantTextHeight="false"
         android:singleLine="false"
-        android:layout_marginTop="35dp"
+        android:layout_marginTop="25dp"
         android:layout_below="@+id/topRightButton"
         android:onClick="simpleClick"
         android:layout_marginRight="15dp"
@@ -104,7 +104,7 @@
         android:longClickable="false"
         android:elegantTextHeight="false"
         android:singleLine="false"
-        android:layout_marginTop="35dp"
+        android:layout_marginTop="25dp"
         android:layout_below="@+id/midRightButton"
         android:onClick="simpleClick"
         android:layout_alignParentRight="true"
@@ -148,9 +148,9 @@
         android:layout_alignParentStart="false"
         android:layout_alignParentLeft="true"
         android:layout_alignParentBottom="true"
-        android:background="@drawable/button_attention"
         android:contentDescription="attention button"
-        android:clickable="true" />
+        android:clickable="true"
+        android:background="@drawable/button_attention" />
 
     <ImageButton
         android:layout_width="100dp"
@@ -160,8 +160,8 @@
         android:layout_centerHorizontal="true"
         android:contentDescription="home button"
         android:onClick="onHomeClick"
-        android:background="@drawable/button_home"
-        android:clickable="true" />
+        android:clickable="true"
+        android:background="@drawable/button_home" />
 
     <ImageButton
         android:layout_width="100dp"
@@ -170,7 +170,7 @@
         android:layout_alignParentBottom="true"
         android:layout_alignParentEnd="false"
         android:layout_alignParentRight="true"
-        android:background="@drawable/button_parental_mode"
         android:clickable="false"
-        android:longClickable="true" />
+        android:longClickable="true"
+        android:background="@drawable/button_parental_mode" />
 </RelativeLayout>

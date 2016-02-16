@@ -3,9 +3,12 @@ package teamabraham.cerebral_palsy_communicator;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -23,11 +26,19 @@ public class foodcategory extends AppCompatActivity {
     Button rightBot;
     Button yesButton;
     Button noButton;
-    Bundle saver;
+    Bundle passer;
+    String MY_PREFS_NAME = "storage";
+    SharedPreferences.Editor editor;
+    SharedPreferences pref;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_foodcategory);
+
+        pref = getApplicationContext().getSharedPreferences(MY_PREFS_NAME, MODE_PRIVATE);
+        editor = pref.edit();
+
         final ImageButton parentalMode = (ImageButton) findViewById(R.id.parentalModeButton);
         thisActivity = this;
         parentalModeEnabled = false;
@@ -40,14 +51,13 @@ public class foodcategory extends AppCompatActivity {
         yesButton = (Button) findViewById(R.id.yesButton);
         noButton = (Button) findViewById(R.id.noButton);
         Bundle extras = getIntent().getExtras();
-        if (extras != null) {
-            leftTop.setText(extras.getString("topLeftText"));
-            rightTop.setText(extras.getString("topRightText"));
-            leftMid.setText(extras.getString("midLeftText"));
-            rightMid.setText(extras.getString("midRightText"));
-            leftBot.setText(extras.getString("botLeftText"));
-            rightBot.setText(extras.getString("botRightText"));
-        }
+        leftTop.setText(pref.getString("topLeftTextFood", leftTop.getText().toString()));
+        rightTop.setText(pref.getString("topRightTextFood", rightTop.getText().toString()));
+        leftMid.setText(pref.getString("midLeftTextFood", leftMid.getText().toString()));
+        rightMid.setText(pref.getString("midRightTextFood", rightMid.getText().toString()));
+        leftBot.setText(pref.getString("botLeftTextFood", leftBot.getText().toString()));
+        rightBot.setText(pref.getString("botRightTextFood", rightBot.getText().toString()));
+
 
         parentalMode.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
@@ -79,15 +89,17 @@ public class foodcategory extends AppCompatActivity {
         });
     }
 
+
     public void onHomeClick(View v) {
         Intent newActivity = new Intent(this, MainActivity.class);
-
-        newActivity.putExtra("topLeftText", leftTop.getText().toString());
-        newActivity.putExtra("topRightText", rightTop.getText().toString());
-        newActivity.putExtra("midLeftText", leftMid.getText().toString());
-        newActivity.putExtra("midRightText", rightMid.getText().toString());
-        newActivity.putExtra("botLeftText", leftBot.getText().toString());
-        newActivity.putExtra("botRightText", rightBot.getText().toString());
+        editor.putString("topLeftTextFood", leftTop.getText().toString());
+        editor.putString("topRightTextFood", rightTop.getText().toString());
+        editor.putString("midLeftTextFood", leftMid.getText().toString());
+        editor.putString("midRightTextFood", rightMid.getText().toString());
+        editor.putString("botLeftTextFood", leftBot.getText().toString());
+        editor.putString("botRightTextFood", rightBot.getText().toString());
+        newActivity.putExtra("id", "foodCat");
+        editor.commit();
         startActivity(newActivity);
     }
 

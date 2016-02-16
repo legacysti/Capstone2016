@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -25,6 +26,9 @@ public class personalcategory extends AppCompatActivity {
     Button rightBot;
     Button yesButton;
     Button noButton;
+    String MY_PREFS_NAME = "storage";
+    SharedPreferences.Editor editor;
+    SharedPreferences pref;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +36,8 @@ public class personalcategory extends AppCompatActivity {
         setContentView(R.layout.activity_personalcategory);
         final ImageButton parentalMode = (ImageButton) findViewById(R.id.parentalModeButton);
         parentalModeEnabled = false;
+        pref = getApplicationContext().getSharedPreferences(MY_PREFS_NAME, MODE_PRIVATE);
+        editor = pref.edit();
         leftTop = (Button)findViewById(R.id.topLeftButton);
         rightTop = (Button) findViewById(R.id.topRightButton);
         leftMid = (Button) findViewById(R.id.midLeftButton);
@@ -41,14 +47,12 @@ public class personalcategory extends AppCompatActivity {
         yesButton = (Button) findViewById(R.id.yesButton);
         noButton = (Button) findViewById(R.id.noButton);
         Bundle extras = getIntent().getExtras();
-        if (extras != null) {
-            leftTop.setText(extras.getString("topLeftText"));
-            rightTop.setText(extras.getString("topRightText"));
-            leftMid.setText(extras.getString("midLeftText"));
-            rightMid.setText(extras.getString("midRightText"));
-            leftBot.setText(extras.getString("botLeftText"));
-            rightBot.setText(extras.getString("botRightText"));
-        }
+        leftTop.setText(pref.getString("topLeftTextPer", leftTop.getText().toString()));
+        rightTop.setText(pref.getString("topRightTextPer", rightTop.getText().toString()));
+        leftMid.setText(pref.getString("midLeftTextPer", leftMid.getText().toString()));
+        rightMid.setText(pref.getString("midRightTextPer", rightMid.getText().toString()));
+        leftBot.setText(pref.getString("botLeftTextPer", leftBot.getText().toString()));
+        rightBot.setText(pref.getString("botRightTextPer", rightBot.getText().toString()));
         thisActivity= this;
         parentalMode.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
@@ -88,12 +92,14 @@ public class personalcategory extends AppCompatActivity {
     public void onHomeClick(View v) {
         Intent newActivity = new Intent(this, MainActivity.class);
 
-        newActivity.putExtra("topLeftText", leftTop.getText().toString());
-        newActivity.putExtra("topRightText", rightTop.getText().toString());
-        newActivity.putExtra("midLeftText", leftMid.getText().toString());
-        newActivity.putExtra("midRightText", rightMid.getText().toString());
-        newActivity.putExtra("botLeftText", leftBot.getText().toString());
-        newActivity.putExtra("botRightText", rightBot.getText().toString());
+        editor.putString("topLeftTextPer", leftTop.getText().toString());
+        editor.putString("topRightTextPer", rightTop.getText().toString());
+        editor.putString("midLeftTextPer", leftMid.getText().toString());
+        editor.putString("midRightTextPer", rightMid.getText().toString());
+        editor.putString("botLeftTextPer", leftBot.getText().toString());
+        editor.putString("botRightTextPer", rightBot.getText().toString());
+        editor.commit();
+        newActivity.putExtra("id", "perCat");
         startActivity(newActivity);
     }
 
