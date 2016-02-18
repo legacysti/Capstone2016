@@ -12,6 +12,7 @@
         android:layout_width="550dp"
         android:layout_height="175dp"
         android:id="@+id/topLeftButton"
+        android:text="Youtube"
         android:layout_alignParentStart="false"
         android:enabled="true"
         android:clickable="true"

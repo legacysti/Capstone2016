@@ -11,7 +11,7 @@
     <Button
         android:layout_width="550dp"
         android:layout_height="175dp"
-        android:text="Go Outside&#10;Nje"
+        android:text="Go Outside"
         android:id="@+id/topLeftButton"
         android:layout_alignParentStart="false"
         android:enabled="true"
@@ -29,7 +29,7 @@
     <Button
         android:layout_width="550dp"
         android:layout_height="175dp"
-        android:text="Watch TV&#10;Filamu"
+        android:text="Watch TV"
         android:id="@+id/midLeftButton"
         android:layout_below="@+id/topLeftButton"
         android:layout_alignParentStart="false"
@@ -46,7 +46,7 @@
     <Button
         android:layout_width="550dp"
         android:layout_height="175dp"
-        android:text="Go Somewhere(walk)&#10;Kutembea"
+        android:text="Go Somewhere(walk)"
         android:id="@+id/botLeftButton"
         android:enabled="true"
         android:textSize="50sp"
@@ -62,7 +62,7 @@
     <Button
         android:layout_width="550dp"
         android:layout_height="175dp"
-        android:text="Listen to music&#10;Muziki"
+        android:text="Listen to music"
         android:id="@+id/topRightButton"
         android:height="175dp"
         android:width="550dp"
@@ -81,7 +81,7 @@
     <Button
         android:layout_width="550dp"
         android:layout_height="175dp"
-        android:text="Watch WWE&#10;Kumenyana"
+        android:text="Watch Netflix"
         android:id="@+id/midRightButton"
         android:enabled="true"
         android:clickable="true"
@@ -99,7 +99,7 @@
     <Button
         android:layout_width="550dp"
         android:layout_height="175dp"
-        android:text="Go Inside&#10;Ndani"
+        android:text="Go Inside"
         android:id="@+id/botRightButton"
         android:enabled="true"
         android:clickable="true"

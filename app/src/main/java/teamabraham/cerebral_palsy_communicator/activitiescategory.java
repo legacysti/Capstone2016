@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.media.MediaPlayer;
 import android.net.Uri;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -19,6 +20,7 @@ import java.io.IOException;
 public class activitiescategory extends AppCompatActivity {
 
     boolean parentalModeEnabled;
+    public MediaPlayer mp = new MediaPlayer();
     Context thisActivity;
     Button leftTop;
     Button rightTop;
@@ -28,7 +30,6 @@ public class activitiescategory extends AppCompatActivity {
     Button rightBot;
     Button yesButton;
     Button noButton;
-    Bundle passer;
     String MY_PREFS_NAME = "storage";
     SharedPreferences.Editor editor;
     SharedPreferences pref;
@@ -48,7 +49,6 @@ public class activitiescategory extends AppCompatActivity {
         rightBot = (Button) findViewById(R.id.botRightButton);
         yesButton = (Button) findViewById(R.id.yesButton);
         noButton = (Button) findViewById(R.id.noButton);
-        Bundle extras = getIntent().getExtras();
         pref = getApplicationContext().getSharedPreferences(MY_PREFS_NAME, MODE_PRIVATE);
         editor = pref.edit();
         leftTop.setText(pref.getString("topLeftTextAct", leftTop.getText().toString()));
@@ -73,6 +73,12 @@ public class activitiescategory extends AppCompatActivity {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         parentalModeEnabled = !parentalModeEnabled;
+                        if(parentalModeEnabled) {
+                            parentalMode.setImageResource(R.drawable.button_parental_mode_pressed);
+                        }
+                        else{
+                            parentalMode.setImageResource(R.drawable.button_parental_mode_unpressed);
+                        }
                     }
                 });
 
@@ -103,36 +109,102 @@ public class activitiescategory extends AppCompatActivity {
         startActivity(newActivity);
     }
 
-    public void simpleClick(View v){
-        final Button pressed = (Button) v;
+    public void simpleClick(View view){
+        final Button pressed = (Button) view;
 
         if(parentalModeEnabled == false) {
+            Intent imagePopUpIntent = new Intent(this, ImagePopUp.class);
+            switch (view.getId()) {
+                case R.id.topLeftButton:
+                    imagePopUpIntent.putExtra("str", pressed.getText().toString());
+                    startActivity(imagePopUpIntent);
+                    break;
+                case R.id.topRightButton:
+                    imagePopUpIntent.putExtra("str", pressed.getText().toString());
+                    startActivity(imagePopUpIntent);
+                    break;
+                case R.id.midLeftButton:
+                    imagePopUpIntent.putExtra("str", pressed.getText().toString());
+                    startActivity(imagePopUpIntent);
+                    break;
+                case R.id.midRightButton:
+                    imagePopUpIntent.putExtra("str", pressed.getText().toString());
+                    startActivity(imagePopUpIntent);
+                    break;
+                case R.id.botLeftButton:
+                    imagePopUpIntent.putExtra("str", pressed.getText().toString());
+                    startActivity(imagePopUpIntent);
+                    break;
+                case R.id.botRightButton:
+                    imagePopUpIntent.putExtra("str", pressed.getText().toString());
+                    startActivity(imagePopUpIntent);
+                    break;
+                case R.id.yesButton:
+                    try {
+                        mp.reset();
+                        Uri clapString = Uri.parse("android.resource://" + getPackageName() + "/" + R.raw.yes);
+                        mp.setDataSource(getApplicationContext(), clapString);
+                        mp.prepare();
+                        mp.start();
+                    } catch (IOException e) {
 
+                    }
+                    break;
+                case R.id.noButton:
+                    try {
+                        mp.reset();
+                        Uri clapString = Uri.parse("android.resource://" + getPackageName() + "/" + R.raw.no);
+                        mp.setDataSource(getApplicationContext(), clapString);
+                        mp.prepare();
+                        mp.start();
+                    } catch (IOException e) {
+
+                    }
+                    break;
+                default:
+
+            }
 
         }
         else if(parentalModeEnabled == true){
 
-            final AlertDialog.Builder builder = new AlertDialog.Builder(thisActivity);
-            builder.setTitle("Enter new button text:");
-            final EditText input = new EditText(thisActivity);
-            builder.setView(input);
+            if(pressed.getId() == R.id.yesButton || pressed.getId() == R.id.noButton){
+                final AlertDialog.Builder builder = new AlertDialog.Builder(thisActivity);
+                builder.setTitle("Can't change 'Yes' or 'No' button text.");
 
-            builder.setPositiveButton("Change", new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialog, int which) {
-                    pressed.setText(input.getText().toString());
+                builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
 
-                }
-            });
 
-            builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialog, int which) {
-                    dialog.cancel();
-                }
-            });
+                    }
+                });
 
-            builder.show();
+                builder.show();
+            }
+            else {
+                final AlertDialog.Builder builder = new AlertDialog.Builder(thisActivity);
+                builder.setTitle("Enter new button text:");
+                final EditText input = new EditText(thisActivity);
+                builder.setView(input);
+
+                builder.setPositiveButton("Change", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        pressed.setText(input.getText().toString());
+
+                    }
+                });
+
+                builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.cancel();
+                    }
+                });
+
+                builder.show();
+            }
         }
     }
 }

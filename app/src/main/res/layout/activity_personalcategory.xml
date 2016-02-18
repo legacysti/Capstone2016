@@ -10,7 +10,7 @@
     <Button
         android:layout_width="550dp"
         android:layout_height="175dp"
-        android:text="I feel sick&#10;Kujisikia mgonjwa"
+        android:text="I feel sick"
         android:id="@+id/topLeftButton"
         android:layout_alignParentStart="false"
         android:enabled="true"
@@ -28,7 +28,7 @@
     <Button
         android:layout_width="550dp"
         android:layout_height="175dp"
-        android:text="I'm Uncomfortable&#10;Wasiwasi"
+        android:text="I'm Uncomfortable"
         android:id="@+id/midLeftButton"
         android:layout_below="@+id/topLeftButton"
         android:layout_alignParentStart="false"
@@ -45,7 +45,7 @@
     <Button
         android:layout_width="550dp"
         android:layout_height="175dp"
-        android:text="Im Okay&#10;Mimi nina Okay"
+        android:text="Im Okay"
         android:id="@+id/botLeftButton"
         android:enabled="true"
         android:background="@drawable/button_bot_left"
@@ -61,7 +61,7 @@
     <Button
         android:layout_width="550dp"
         android:layout_height="175dp"
-        android:text="I'm Tired&#10;Nimechoka"
+        android:text="I'm Tired"
         android:id="@+id/topRightButton"
         android:enabled="true"
         android:clickable="true"
@@ -78,7 +78,7 @@
     <Button
         android:layout_width="550dp"
         android:layout_height="175dp"
-        android:text="Need to go to the Bathroom&#10;Choo"
+        android:text="Need to go to the Bathroom"
         android:id="@+id/midRightButton"
         android:enabled="true"
         android:clickable="true"
@@ -96,7 +96,7 @@
     <Button
         android:layout_width="550dp"
         android:layout_height="175dp"
-        android:text="Need to be changed&#10;Mabadiliko suruali"
+        android:text="Need to be changed"
         android:id="@+id/botRightButton"
         android:enabled="true"
         android:clickable="true"

@@ -45,7 +45,7 @@
     <Button
         android:layout_width="550dp"
         android:layout_height="175dp"
-        android:text="Pineapple&#10;Mananasi"
+        android:text="Pineapple"
         android:id="@+id/botLeftButton"
         android:enabled="true"
         android:textSize="50sp"
@@ -61,7 +61,7 @@
     <Button
         android:layout_width="550dp"
         android:layout_height="175dp"
-        android:text="Banana&#10;Ndizi"
+        android:text="Banana"
         android:id="@+id/topRightButton"
         android:enabled="true"
         android:clickable="true"
@@ -78,7 +78,7 @@
     <Button
         android:layout_width="550dp"
         android:layout_height="175dp"
-        android:text="Drink&#10;Michanganyiko"
+        android:text="Drink"
         android:id="@+id/midRightButton"
         android:enabled="true"
         android:clickable="true"

@@ -21,6 +21,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".ImagePopUp" android:theme="@style/myDialogTheme" />
         <activity android:name=".foodcategory" >
         </activity>
         <activity android:name=".activitiescategory" >

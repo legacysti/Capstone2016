@@ -11,7 +11,7 @@
     <Button
         android:layout_width="550dp"
         android:layout_height="175dp"
-        android:text="I don't care&#10;Sijali"
+        android:text="I don't care"
         android:id="@+id/topLeftButton"
         android:layout_alignParentTop="true"
         android:layout_alignParentStart="false"
@@ -30,7 +30,7 @@
     <Button
         android:layout_width="550dp"
         android:layout_height="175dp"
-        android:text="Aggravated&#10;Kuchochewa"
+        android:text="Aggravated"
         android:id="@+id/midLeftButton"
         android:layout_below="@+id/topLeftButton"
         android:layout_alignParentStart="false"
@@ -47,7 +47,7 @@
     <Button
         android:layout_width="550dp"
         android:layout_height="175dp"
-        android:text="Bored&#10;Kuchoka"
+        android:text="Bored"
         android:id="@+id/botLeftButton"
         android:enabled="true"
         android:textSize="50sp"
@@ -63,7 +63,7 @@
     <Button
         android:layout_width="550dp"
         android:layout_height="175dp"
-        android:text="Sad&#10;Kusikitisha"
+        android:text="Sad"
         android:id="@+id/topRightButton"
         android:enabled="true"
         android:clickable="true"
@@ -80,7 +80,7 @@
     <Button
         android:layout_width="550dp"
         android:layout_height="175dp"
-        android:text="Angry&#10;Hasira"
+        android:text="Angry"
         android:id="@+id/midRightButton"
         android:enabled="true"
         android:clickable="true"
@@ -98,7 +98,7 @@
     <Button
         android:layout_width="550dp"
         android:layout_height="175dp"
-        android:text="Happy&#10;Furaha"
+        android:text="Happy"
         android:id="@+id/botRightButton"
         android:enabled="true"
         android:clickable="true"

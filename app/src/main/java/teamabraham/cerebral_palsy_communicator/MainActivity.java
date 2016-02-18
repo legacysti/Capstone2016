@@ -47,10 +47,6 @@ public class MainActivity extends AppCompatActivity{
 
         pref = getApplicationContext().getSharedPreferences(MY_PREFS_NAME, MODE_PRIVATE);
         editor = pref.edit();
-        Bundle extras = getIntent().getExtras();
-        if (extras != null) {
-            passer = extras;
-        }
 
         leftTop = (Button)findViewById(R.id.topLeftButton);
         rightTop = (Button)findViewById(R.id.topRightButton);
@@ -127,41 +123,34 @@ public class MainActivity extends AppCompatActivity{
         if(parentalModeEnabled == false) {
             switch (view.getId()) {
                 case R.id.topLeftButton:
+
                     newActivity = new Intent(this, foodcategory.class);
-                    if(passer != null && (passer.getString("id").equals("foodCat"))) {
-                        newActivity.putExtra("id", "foodCat");
-                    }
+
                     break;
                 case R.id.topRightButton:
+
                     newActivity = new Intent(this, activitiescategory.class);
-                    if(passer != null&& (passer.getString("id").equals("actCat"))) {
-                        newActivity.putExtra("id", "actCat");
-                    }
+
                     break;
                 case R.id.midLeftButton:
-                    newActivity = new Intent(this, personalcategory.class);
-                    if(passer != null && (passer.getString("id").equals("perCat"))) {
-                        newActivity.putExtra("id", "perCat");
 
-                    }
+                    newActivity = new Intent(this, personalcategory.class);
+
                     break;
                 case R.id.midRightButton:
+
                     newActivity = new Intent(this, funcategory.class);
-                    if(passer != null && (passer.getString("id").equals("funCat"))) {
-                        newActivity.putExtra("id", "funCat");
-                    }
+
                     break;
                 case R.id.botLeftButton:
+
                     newActivity = new Intent(this, emotioncategory.class);
-                    if(passer != null && (passer.getString("id").equals("emoCat"))) {
-                        newActivity.putExtra("id", "emoCat");
-                    }
+
                     break;
                 case R.id.botRightButton:
+
                     newActivity = new Intent(this, favoritescategory.class);
-                    if(passer != null && (passer.getString("id").equals("favCat"))) {
-                        newActivity.putExtra("id", "favCat");
-                    }
+
                     break;
                 case R.id.yesButton:
                     try {
@@ -195,22 +184,10 @@ public class MainActivity extends AppCompatActivity{
         else if(parentalModeEnabled == true){
 
             final AlertDialog.Builder builder = new AlertDialog.Builder(thisActivity);
-            builder.setTitle("Enter new button text:");
-            final EditText input = new EditText(thisActivity);
-            builder.setView(input);
-
-            builder.setPositiveButton("Change", new DialogInterface.OnClickListener() {
+            builder.setTitle("Cannot change category text");
+            builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
-                    pressed.setText(input.getText().toString());
-
-                }
-            });
-
-            builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialog, int which) {
-                    dialog.cancel();
                 }
             });
 
