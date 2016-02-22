@@ -29,6 +29,7 @@ public class emotioncategory extends AppCompatActivity {
     Button rightBot;
     Button yesButton;
     Button noButton;
+    ImageButton parentalMode;
     String MY_PREFS_NAME = "storage";
     SharedPreferences.Editor editor;
     SharedPreferences pref;
@@ -38,74 +39,24 @@ public class emotioncategory extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_emotioncategory);
         parentalModeEnabled = false;
-        final ImageButton parentalMode = (ImageButton) findViewById(R.id.parentalModeButton);
+        parentalMode = (ImageButton) findViewById(R.id.parentalModeButton);
         pref = getApplicationContext().getSharedPreferences(MY_PREFS_NAME, MODE_PRIVATE);
         editor = pref.edit();
         thisActivity = this;
         parentalModeEnabled = false;
-        leftTop = (Button)findViewById(R.id.topLeftButton);
-        rightTop = (Button) findViewById(R.id.topRightButton);
-        leftMid = (Button) findViewById(R.id.midLeftButton);
-        rightMid = (Button) findViewById(R.id.midRightButton);
-        leftBot = (Button) findViewById(R.id.botLeftButton);
-        rightBot = (Button) findViewById(R.id.botRightButton);
-        yesButton = (Button) findViewById(R.id.yesButton);
-        noButton = (Button) findViewById(R.id.noButton);
-        leftTop.setText(pref.getString("topLeftTextEmo", leftTop.getText().toString()));
-        rightTop.setText(pref.getString("topRightTextEmo", rightTop.getText().toString()));
-        leftMid.setText(pref.getString("midLeftTextEmo", leftMid.getText().toString()));
-        rightMid.setText(pref.getString("midRightTextEmo", rightMid.getText().toString()));
-        leftBot.setText(pref.getString("botLeftTextEmo", leftBot.getText().toString()));
-        rightBot.setText(pref.getString("botRightTextEmo", rightBot.getText().toString()));
+        assignButtons();
+        setText();
         parentalMode.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
-                final AlertDialog.Builder builder = new AlertDialog.Builder(thisActivity);
-                if (!parentalModeEnabled) {
-                    builder.setTitle("Enter Parental Mode?");
-                } else if (parentalModeEnabled) {
-                    builder.setTitle("Exit Parental Mode?");
-                }
-                //final EditText input = new EditText(thisActivity);
-
-                //builder.setView(input);
-
-                builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        parentalModeEnabled = !parentalModeEnabled;
-                        if(parentalModeEnabled) {
-                            parentalMode.setImageResource(R.drawable.button_parental_mode_pressed);
-                        }
-                        else{
-                            parentalMode.setImageResource(R.drawable.button_parental_mode_unpressed);
-                        }
-                    }
-                });
-
-                builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        dialog.cancel();
-                    }
-                });
-
-                builder.show();
-                return true;
+                return presentToggle();
             }
         });
     }
 
     public void onHomeClick(View v) {
         Intent newActivity = new Intent(this, MainActivity.class);
-        editor.putString("topLeftTextEmo", leftTop.getText().toString());
-        editor.putString("topRightTextEmo", rightTop.getText().toString());
-        editor.putString("midLeftTextEmo", leftMid.getText().toString());
-        editor.putString("midRightTextEmo", rightMid.getText().toString());
-        editor.putString("botLeftTextEmo", leftBot.getText().toString());
-        editor.putString("botRightTextEmo", rightBot.getText().toString());
-        editor.commit();
-        newActivity.putExtra("id", "emoCat");
+        updateText();
         startActivity(newActivity);
     }
 
@@ -183,29 +134,95 @@ public class emotioncategory extends AppCompatActivity {
                 builder.show();
             }
             else {
-                final AlertDialog.Builder builder = new AlertDialog.Builder(thisActivity);
-                builder.setTitle("Enter new button text:");
-                final EditText input = new EditText(thisActivity);
-                builder.setView(input);
-
-                builder.setPositiveButton("Change", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        pressed.setText(input.getText().toString());
-
-                    }
-                });
-
-                builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        dialog.cancel();
-                    }
-                });
-
-                builder.show();
+                changeText(pressed);
             }
         }
     }
 
+    private void updateText(){
+        editor.putString("topLeftTextEmo", leftTop.getText().toString());
+        editor.putString("topRightTextEmo", rightTop.getText().toString());
+        editor.putString("midLeftTextEmo", leftMid.getText().toString());
+        editor.putString("midRightTextEmo", rightMid.getText().toString());
+        editor.putString("botLeftTextEmo", leftBot.getText().toString());
+        editor.putString("botRightTextEmo", rightBot.getText().toString());
+        editor.commit();
+    }
+
+    private void changeText(Button b){
+        final Button bb = b;
+        final AlertDialog.Builder builder = new AlertDialog.Builder(thisActivity);
+        builder.setTitle("Enter new button text:");
+        final EditText input = new EditText(thisActivity);
+        builder.setView(input);
+
+        builder.setPositiveButton("Change", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                bb.setText(input.getText().toString());
+
+            }
+        });
+
+        builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.cancel();
+            }
+        });
+
+        builder.show();
+    }
+
+    private boolean presentToggle(){
+        final AlertDialog.Builder builder = new AlertDialog.Builder(thisActivity);
+        if (!parentalModeEnabled) {
+            builder.setTitle("Enter Parental Mode?");
+        } else if (parentalModeEnabled) {
+            builder.setTitle("Exit Parental Mode?");
+        }
+
+        builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                parentalModeEnabled = !parentalModeEnabled;
+                if(parentalModeEnabled) {
+                    parentalMode.setImageResource(R.drawable.button_parental_mode_pressed);
+                }
+                else{
+                    parentalMode.setImageResource(R.drawable.button_parental_mode_unpressed);
+                }
+            }
+        });
+
+        builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.cancel();
+            }
+        });
+
+        builder.show();
+        return true;
+    }
+
+    private void assignButtons(){
+        leftTop = (Button)findViewById(R.id.topLeftButton);
+        rightTop = (Button) findViewById(R.id.topRightButton);
+        leftMid = (Button) findViewById(R.id.midLeftButton);
+        rightMid = (Button) findViewById(R.id.midRightButton);
+        leftBot = (Button) findViewById(R.id.botLeftButton);
+        rightBot = (Button) findViewById(R.id.botRightButton);
+        yesButton = (Button) findViewById(R.id.yesButton);
+        noButton = (Button) findViewById(R.id.noButton);
+    }
+
+    private void setText(){
+        leftTop.setText(pref.getString("topLeftTextEmo", leftTop.getText().toString()));
+        rightTop.setText(pref.getString("topRightTextEmo", rightTop.getText().toString()));
+        leftMid.setText(pref.getString("midLeftTextEmo", leftMid.getText().toString()));
+        rightMid.setText(pref.getString("midRightTextEmo", rightMid.getText().toString()));
+        leftBot.setText(pref.getString("botLeftTextEmo", leftBot.getText().toString()));
+        rightBot.setText(pref.getString("botRightTextEmo", rightBot.getText().toString()));
+    }
 }

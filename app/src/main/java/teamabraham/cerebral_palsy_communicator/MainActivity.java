@@ -35,7 +35,6 @@ public class MainActivity extends AppCompatActivity{
     Button rightMid;
     Button leftBot;
     Button rightBot;
-    Bundle passer;
     String MY_PREFS_NAME = "storage";
     SharedPreferences.Editor editor;
     SharedPreferences pref;

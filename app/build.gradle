@@ -5,8 +5,8 @@ android {
     buildToolsVersion '23.0.1'
     defaultConfig {
         applicationId "teamabraham.cerebral_palsy_communicator"
-        minSdkVersion 22
-        targetSdkVersion 22
+        minSdkVersion 21
+        targetSdkVersion 21
         versionCode 1
         versionName "1.0"
     }
