@@ -34,6 +34,14 @@ public class activitiescategory extends AppCompatActivity {
     String MY_PREFS_NAME = "storage";
     SharedPreferences.Editor editor;
     SharedPreferences pref;
+    int max = -9999;
+    int leftTopVal;
+    int rightTopVal;
+    int leftMidVal;
+    int rightMidVal;
+    int leftBotVal;
+    int rightBotVal;
+    String faveButton = "GO OUTSIDE";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,6 +66,8 @@ public class activitiescategory extends AppCompatActivity {
     public void onHomeClick(View v) {
         Intent newActivity = new Intent(this, MainActivity.class);
         updateText();
+        updateFaveCount();
+        newActivity.putExtra("actCat", faveButton);
         startActivity(newActivity);
     }
 
@@ -68,26 +78,69 @@ public class activitiescategory extends AppCompatActivity {
             Intent imagePopUpIntent = new Intent(this, ImagePopUp.class);
             switch (view.getId()) {
                 case R.id.topLeftButton:
+                    //set fave
+                    leftTopVal += 1;
+                    System.out.println("this is the top button:" + faveButton);
+                    if(leftTopVal > max){
+                        max = leftTopVal;
+                        faveButton = pressed.getText().toString();
+                    }
                     imagePopUpIntent.putExtra("str", pressed.getText().toString());
                     startActivity(imagePopUpIntent);
                     break;
+
                 case R.id.topRightButton:
+                    //set fave
+                    rightTopVal += 1;
+                    System.out.println("this is the top button:" + faveButton);
+                    if(rightTopVal > max){
+                        max = rightTopVal;
+                        faveButton = pressed.getText().toString();
+                    }
                     imagePopUpIntent.putExtra("str", pressed.getText().toString());
                     startActivity(imagePopUpIntent);
                     break;
                 case R.id.midLeftButton:
+                    //set fave
+                    leftMidVal += 1;
+                    System.out.println("this is the top button:" + faveButton);
+                    if(leftMidVal > max){
+                        max = leftMidVal;
+                        faveButton = pressed.getText().toString();
+                    }
                     imagePopUpIntent.putExtra("str", pressed.getText().toString());
                     startActivity(imagePopUpIntent);
                     break;
                 case R.id.midRightButton:
+                    //set fave
+                    rightMidVal += 1;
+                    System.out.println("this is the top button:" + faveButton);
+                    if(rightMidVal > max){
+                        max = rightMidVal;
+                        faveButton = pressed.getText().toString();
+                    }
                     imagePopUpIntent.putExtra("str", pressed.getText().toString());
                     startActivity(imagePopUpIntent);
                     break;
                 case R.id.botLeftButton:
+                    //set fave
+                    leftBotVal += 1;
+                    System.out.println("this is the top button:" + faveButton);
+                    if(leftBotVal > max){
+                        max = leftBotVal;
+                        faveButton = pressed.getText().toString();
+                    }
                     imagePopUpIntent.putExtra("str", pressed.getText().toString());
                     startActivity(imagePopUpIntent);
                     break;
                 case R.id.botRightButton:
+                    //set fave
+                    rightBotVal += 1;
+                    System.out.println("this is the top button:" + faveButton);
+                    if(rightBotVal > max){
+                        max = rightBotVal;
+                        faveButton = pressed.getText().toString();
+                    }
                     imagePopUpIntent.putExtra("str", pressed.getText().toString());
                     startActivity(imagePopUpIntent);
                     break;
@@ -201,7 +254,15 @@ public class activitiescategory extends AppCompatActivity {
         editor.putString("botRightTextAct", rightBot.getText().toString());
         editor.commit();
     }
-
+    private void updateFaveCount(){
+        editor.putInt("topLeftValFood", leftTopVal);
+        editor.putInt("topRightValFood", rightTopVal);
+        editor.putInt("midLeftValFood", leftMidVal);
+        editor.putInt("midRightValFood", rightMidVal);
+        editor.putInt("botLeftValFood", leftBotVal);
+        editor.putInt("botRightValFood", rightBotVal);
+        editor.commit();
+    }
     private void changeText(Button b){
         final Button bb = b;
         final AlertDialog.Builder builder = new AlertDialog.Builder(thisActivity);

@@ -38,11 +38,21 @@ public class MainActivity extends AppCompatActivity{
     String MY_PREFS_NAME = "storage";
     SharedPreferences.Editor editor;
     SharedPreferences pref;
+    String funCategory, activeCategory,emotionCategory, personalCategory, foodCategory = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        Bundle extras = getIntent().getExtras();
+        if (extras != null) {
+            funCategory = extras.getString("funCat");
+            activeCategory = extras.getString("actCat");
+            emotionCategory = extras.getString("emoCat");
+            personalCategory = extras.getString("perCat");
+            foodCategory = extras.getString("fooCat");
+        }
 
         pref = getApplicationContext().getSharedPreferences(MY_PREFS_NAME, MODE_PRIVATE);
         editor = pref.edit();
@@ -149,6 +159,11 @@ public class MainActivity extends AppCompatActivity{
                 case R.id.botRightButton:
 
                     newActivity = new Intent(this, favoritescategory.class);
+                    newActivity.putExtra("favFood", foodCategory);
+                    newActivity.putExtra("favPersonal", personalCategory);
+                    newActivity.putExtra("favActivity", activeCategory);
+                    newActivity.putExtra("favEmotion", emotionCategory);
+                    newActivity.putExtra("favFun", funCategory);
 
                     break;
                 case R.id.yesButton:
