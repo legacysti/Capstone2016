@@ -75,6 +75,18 @@ public class foodcategory extends AppCompatActivity {
         startActivity(newActivity);
     }
 
+    public void attentionClick(View v){
+        try {
+            mp.reset();
+            Uri clapString = Uri.parse("android.resource://" + getPackageName() + "/" + R.raw.attention);
+            mp.setDataSource(getApplicationContext(), clapString);
+            mp.prepare();
+            mp.start();
+        } catch (IOException e) {
+
+        }
+    }
+
     public void simpleClick(View view){
         final Button pressed = (Button) view;
 
@@ -173,7 +185,8 @@ public class foodcategory extends AppCompatActivity {
                 default:
 
             }
-
+            editor.putString("topLeftTextFav", faveButton);
+            editor.commit();
         }
         else if(parentalModeEnabled == true){
 

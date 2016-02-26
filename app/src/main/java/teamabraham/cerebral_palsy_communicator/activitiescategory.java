@@ -71,6 +71,19 @@ public class activitiescategory extends AppCompatActivity {
         startActivity(newActivity);
     }
 
+    public void attentionClick(View v){
+        try {
+            mp.reset();
+            Uri clapString = Uri.parse("android.resource://" + getPackageName() + "/" + R.raw.attention);
+            mp.setDataSource(getApplicationContext(), clapString);
+            mp.prepare();
+            mp.start();
+        } catch (IOException e) {
+
+        }
+    }
+
+
     public void simpleClick(View view){
         final Button pressed = (Button) view;
 
@@ -169,7 +182,8 @@ public class activitiescategory extends AppCompatActivity {
                 default:
 
             }
-
+            editor.putString("topRightTextFav", faveButton);
+            editor.commit();
         }
         else if(parentalModeEnabled == true){
 

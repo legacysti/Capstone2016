@@ -152,6 +152,7 @@
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:id="@+id/attentionButton"
+        android:onClick="attentionClick"
         android:layout_alignParentStart="false"
         android:layout_alignParentLeft="true"
         android:layout_alignParentBottom="true"

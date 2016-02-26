@@ -75,10 +75,21 @@ public class personalcategory extends AppCompatActivity {
         startActivity(newActivity);
     }
 
+    public void attentionClick(View v){
+        try {
+            mp.reset();
+            Uri clapString = Uri.parse("android.resource://" + getPackageName() + "/" + R.raw.attention);
+            mp.setDataSource(getApplicationContext(), clapString);
+            mp.prepare();
+            mp.start();
+        } catch (IOException e) {
+
+        }
+    }
+
     public void simpleClick(View view){
 
         final Button pressed = (Button) view;
-
         if(parentalModeEnabled == false) {
             Intent imagePopUpIntent = new Intent(this, ImagePopUp.class);
             switch (view.getId()) {
@@ -171,10 +182,12 @@ public class personalcategory extends AppCompatActivity {
 
                     }
                     break;
+
                 default:
 
             }
-
+            editor.putString("midLeftTextFav", faveButton);
+            editor.commit();
         }
         else if(parentalModeEnabled == true){
 

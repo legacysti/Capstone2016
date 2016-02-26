@@ -70,6 +70,18 @@ public class emotioncategory extends AppCompatActivity {
         startActivity(newActivity);
     }
 
+    public void attentionClick(View v){
+        try {
+            mp.reset();
+            Uri clapString = Uri.parse("android.resource://" + getPackageName() + "/" + R.raw.attention);
+            mp.setDataSource(getApplicationContext(), clapString);
+            mp.prepare();
+            mp.start();
+        } catch (IOException e) {
+
+        }
+    }
+
     public void simpleClick(View view){
         final Button pressed = (Button) view;
 
@@ -168,7 +180,8 @@ public class emotioncategory extends AppCompatActivity {
                 default:
 
             }
-
+            editor.putString("botLeftTextFav", faveButton);
+            editor.commit();
         }
         else if(parentalModeEnabled == true){
 
@@ -278,7 +291,7 @@ public class emotioncategory extends AppCompatActivity {
         leftBot.setText(pref.getString("botLeftTextEmo", leftBot.getText().toString()));
         rightBot.setText(pref.getString("botRightTextEmo", rightBot.getText().toString()));
     }
-    private void updateFaveCount(){
+    private void updateFaveCount() {
         editor.putInt("topLeftValFood", leftTopVal);
         editor.putInt("topRightValFood", rightTopVal);
         editor.putInt("midLeftValFood", leftMidVal);

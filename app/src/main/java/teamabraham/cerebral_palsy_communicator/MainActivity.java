@@ -80,14 +80,18 @@ public class MainActivity extends AppCompatActivity{
                 else if(parentalModeEnabled){
                     builder.setTitle("Exit Parental Mode?");
                 }
-                //final EditText input = new EditText(thisActivity);
 
-                //builder.setView(input);
 
                 builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         parentalModeEnabled = !parentalModeEnabled;
+                        if(parentalModeEnabled) {
+                            parentalMode.setImageResource(R.drawable.button_parental_mode_pressed);
+                        }
+                        else{
+                            parentalMode.setImageResource(R.drawable.button_parental_mode_unpressed);
+                        }
                     }
                 });
 
@@ -124,6 +128,18 @@ public class MainActivity extends AppCompatActivity{
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    public void attentionClick(View v){
+        try {
+            mp.reset();
+            Uri clapString = Uri.parse("android.resource://" + getPackageName() + "/" + R.raw.attention);
+            mp.setDataSource(getApplicationContext(), clapString);
+            mp.prepare();
+            mp.start();
+        } catch (IOException e) {
+
+        }
     }
 
     public void simpleClick(View view){

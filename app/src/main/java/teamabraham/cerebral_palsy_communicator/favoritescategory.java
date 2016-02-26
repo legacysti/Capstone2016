@@ -17,11 +17,6 @@ public class favoritescategory extends AppCompatActivity {
     SharedPreferences.Editor editor;
     SharedPreferences pref;
     String MY_PREFS_NAME = "storage";
-    String funCategory = "fun";
-    String activeCategory = "go outside";
-    String emotionCategory = "Happy";
-    String personalCategory = "I'm Okay";
-    String foodCategory = "FUFU";
     Button leftTop;
     Button rightTop;
     Button leftMid;
@@ -37,14 +32,6 @@ public class favoritescategory extends AppCompatActivity {
         setContentView(R.layout.activity_favoritescategory);
         pref = getApplicationContext().getSharedPreferences(MY_PREFS_NAME, MODE_PRIVATE);
         editor = pref.edit();
-        Bundle extras = getIntent().getExtras();
-        if (extras != null) {
-            funCategory = extras.getString("favFun");
-            activeCategory = extras.getString("favActivity");
-            emotionCategory = extras.getString("favEmotion");
-            personalCategory = extras.getString("favPersonal");
-            foodCategory = extras.getString("favFood");
-        }
         assignButtons();
         setText();
 
@@ -53,7 +40,6 @@ public class favoritescategory extends AppCompatActivity {
     public void onHomeClick(View v) {
         Intent newActivity = new Intent(this, MainActivity.class);
         updateText();
-        newActivity.putExtra("id", "favCat");
         startActivity(newActivity);
     }
     private void assignButtons(){
@@ -67,21 +53,33 @@ public class favoritescategory extends AppCompatActivity {
         noButton = (Button) findViewById(R.id.noButton);
     }
     private void setText(){
-        leftTop.setText(foodCategory);
-        rightTop.setText(activeCategory);
-        leftMid.setText(personalCategory);
-        rightMid.setText(funCategory);
-        leftBot.setText(emotionCategory);
+        leftTop.setText(pref.getString("topLeftTextFav", leftTop.getText().toString()));
+        rightTop.setText(pref.getString("topRightTextFav", rightTop.getText().toString()));
+        leftMid.setText(pref.getString("midLeftTextFav", leftMid.getText().toString()));
+        rightMid.setText(pref.getString("midRightTextFav", rightMid.getText().toString()));
+        leftBot.setText(pref.getString("botLeftTextFav", leftBot.getText().toString()));
     }
     private void updateText(){
-        editor.putString("topLeftTextFav", foodCategory);
-        editor.putString("topRightTextFav", activeCategory);
-        editor.putString("midLeftTextFav", personalCategory);
-        editor.putString("midRightTextFav", emotionCategory);
-        editor.putString("botLeftTextFav", funCategory);
-//        editor.putString("botRightTextFav", rightBot.getText().toString());
+        editor.putString("topLeftTextFav", leftTop.getText().toString());
+        editor.putString("topRightTextFav", rightTop.getText().toString());
+        editor.putString("midLeftTextFav", leftMid.getText().toString());
+        editor.putString("midRightTextFav", rightMid.getText().toString());
+        editor.putString("botLeftTextFav", leftBot.getText().toString());
         editor.commit();
     }
+
+    public void attentionClick(View v){
+        try {
+            mp.reset();
+            Uri clapString = Uri.parse("android.resource://" + getPackageName() + "/" + R.raw.attention);
+            mp.setDataSource(getApplicationContext(), clapString);
+            mp.prepare();
+            mp.start();
+        } catch (IOException e) {
+
+        }
+    }
+
     public void simpleClick(View view) {
         final Button pressed = (Button) view;
         Intent imagePopUpIntent = new Intent(this, ImagePopUp.class);

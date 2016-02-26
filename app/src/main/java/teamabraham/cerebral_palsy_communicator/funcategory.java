@@ -77,6 +77,18 @@ public class funcategory extends AppCompatActivity {
         startActivity(newActivity);
     }
 
+    public void attentionClick(View v){
+        try {
+            mp.reset();
+            Uri clapString = Uri.parse("android.resource://" + getPackageName() + "/" + R.raw.attention);
+            mp.setDataSource(getApplicationContext(), clapString);
+            mp.prepare();
+            mp.start();
+        } catch (IOException e) {
+
+        }
+    }
+
     /*
         METHOD: simpleClick
         PARAMETERS: View view
