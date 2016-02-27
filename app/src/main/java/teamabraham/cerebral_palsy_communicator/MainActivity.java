@@ -38,25 +38,56 @@ public class MainActivity extends AppCompatActivity{
     String MY_PREFS_NAME = "storage";
     SharedPreferences.Editor editor;
     SharedPreferences pref;
-    String funCategory, activeCategory,emotionCategory, personalCategory, foodCategory = "";
+    boolean hasStarted;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        Bundle extras = getIntent().getExtras();
-        if (extras != null) {
-            funCategory = extras.getString("funCat");
-            activeCategory = extras.getString("actCat");
-            emotionCategory = extras.getString("emoCat");
-            personalCategory = extras.getString("perCat");
-            foodCategory = extras.getString("fooCat");
-        }
-
         pref = getApplicationContext().getSharedPreferences(MY_PREFS_NAME, MODE_PRIVATE);
         editor = pref.edit();
-
+        hasStarted = pref.getBoolean("hasStarted", false);
+        if(!hasStarted){
+            editor.putString("topLeftTextFood", "FuFu");
+            editor.putString("topRightTextFood", "Banana");
+            editor.putString("midLeftTextFood", "Pizza");
+            editor.putString("midRightTextFood", "Drink");
+            editor.putString("botLeftTextFood", "Pineapple");
+            editor.putString("botRightTextFood", "Casava");
+            editor.putString("topLeftTextAct", "Go Outside");
+            editor.putString("topRightTextAct", "Listen to Music");
+            editor.putString("midLeftTextAct", "Watch TV");
+            editor.putString("midRightTextAct", "Watch Netflix");
+            editor.putString("botLeftTextAct", "Go Somewhere");
+            editor.putString("botRightTextAct", "Go Inside");
+            editor.putString("topLeftTextEmo", "I don't Care");
+            editor.putString("topRightTextEmo", "Sad");
+            editor.putString("midLeftTextEmo", "Aggravated");
+            editor.putString("midRightTextEmo", "Angry");
+            editor.putString("botLeftTextEmo", "Bored");
+            editor.putString("botRightTextEmo", "Happy");
+            editor.putString("topLeftTextPer", "I Feel Sick");
+            editor.putString("topRightTextPer", "I'm Tired");
+            editor.putString("midLeftTextPer", "I'm Uncomfortable");
+            editor.putString("midRightTextPer", "Need to go to the Bathroom");
+            editor.putString("botLeftTextPer", "I'm OK");
+            editor.putString("botRightTextPer", "Need to be changed");
+            editor.putString("topLeftTextFun", "YouTube");
+            editor.putString("topRightTextFun", "Stamper");
+            editor.putString("midLeftTextFun", "");
+            editor.putString("midRightTextFun", "");
+            editor.putString("botLeftTextFun", "");
+            editor.putString("botRightTextFun", "");
+            editor.putString("topLeftTextFav", "");
+            editor.putString("topRightTextFav", "");
+            editor.putString("midLeftTextFav", "");
+            editor.putString("midRightTextFav", "");
+            editor.putString("botLeftTextFav", "");
+            editor.putString("botRightTextFav", "");
+            hasStarted = true;
+            editor.putBoolean("hasStarted", hasStarted);
+            editor.commit();
+        }
         leftTop = (Button)findViewById(R.id.topLeftButton);
         rightTop = (Button)findViewById(R.id.topRightButton);
         leftMid = (Button)findViewById(R.id.midLeftButton);
@@ -148,39 +179,32 @@ public class MainActivity extends AppCompatActivity{
         if(parentalModeEnabled == false) {
             switch (view.getId()) {
                 case R.id.topLeftButton:
-
-                    newActivity = new Intent(this, foodcategory.class);
-
+                    newActivity = new Intent(this, categoryActivity.class);
+                    newActivity.putExtra("catID", "Food");
                     break;
                 case R.id.topRightButton:
 
-                    newActivity = new Intent(this, activitiescategory.class);
-
+                    newActivity = new Intent(this, categoryActivity.class);
+                    newActivity.putExtra("catID", "Act");
                     break;
                 case R.id.midLeftButton:
 
-                    newActivity = new Intent(this, personalcategory.class);
-
+                    newActivity = new Intent(this, categoryActivity.class);
+                    newActivity.putExtra("catID", "Per");
                     break;
                 case R.id.midRightButton:
 
-                    newActivity = new Intent(this, funcategory.class);
-
+                    newActivity = new Intent(this, categoryActivity.class);
+                    newActivity.putExtra("catID", "Fun");
                     break;
                 case R.id.botLeftButton:
 
-                    newActivity = new Intent(this, emotioncategory.class);
-
+                    newActivity = new Intent(this, categoryActivity.class);
+                    newActivity.putExtra("catID", "Emo");
                     break;
                 case R.id.botRightButton:
-
-                    newActivity = new Intent(this, favoritescategory.class);
-                    newActivity.putExtra("favFood", foodCategory);
-                    newActivity.putExtra("favPersonal", personalCategory);
-                    newActivity.putExtra("favActivity", activeCategory);
-                    newActivity.putExtra("favEmotion", emotionCategory);
-                    newActivity.putExtra("favFun", funCategory);
-
+                    newActivity = new Intent(this, categoryActivity.class);
+                    newActivity.putExtra("catID", "Fav");
                     break;
                 case R.id.yesButton:
                     try {
