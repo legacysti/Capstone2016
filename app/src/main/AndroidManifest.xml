@@ -22,22 +22,9 @@
             </intent-filter>
         </activity>
         <activity android:name=".ImagePopUp" android:theme="@style/myDialogTheme" />
-        <activity android:name=".foodcategory" >
-        </activity>
-        <activity android:name=".activitiescategory" >
-        </activity>
-        <activity android:name=".personalcategory" >
-        </activity>
-        <activity android:name=".emotioncategory" >
-        </activity>
-        <activity android:name=".favoritescategory" >
+        <activity android:name=".categoryActivity" >
         </activity>
         <activity android:name=".youtubeactivity" >
-        </activity>
-        <activity
-            android:name=".funcategory"
-            android:label="@string/title_activity_funcategory"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar" >
         </activity>
     </application>
 
