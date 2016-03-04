@@ -174,15 +174,4 @@
         android:nestedScrollingEnabled="false"
         android:background="@drawable/button_attention" />
 
-    <ImageButton
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:id="@+id/parentalModeButton"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentEnd="false"
-        android:layout_alignParentRight="true"
-        android:clickable="false"
-        android:longClickable="true"
-        android:background="@drawable/button_parental_mode" />
-
 </RelativeLayout>

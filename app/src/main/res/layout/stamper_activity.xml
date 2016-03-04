@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:id="@+id/stamperActivityBackground"
+    tools:context=".stamperactivity"
+    android:background="#88a8f3">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/stampingLayout"></RelativeLayout>
+
+    <ImageButton
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:id="@+id/attentionButton"
+        android:layout_alignParentStart="false"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentBottom="true"
+        android:contentDescription="attention button"
+        android:clickable="true"
+        android:background="@drawable/button_attention"
+        android:layout_marginLeft="60dp"
+        android:layout_marginBottom="15dp"
+        android:onClick="attentionClick" />
+
+    <Button
+        android:layout_width="400dp"
+        android:layout_height="100dp"
+        android:text="Yes"
+        android:id="@+id/yesButton"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="false"
+        android:layout_alignParentLeft="true"
+        android:enabled="true"
+        android:clickable="true"
+        android:textSize="50dp"
+        android:background="@drawable/button_yes"
+        android:layout_marginLeft="170dp"
+        android:layout_marginBottom="15dp"
+        android:nestedScrollingEnabled="true"
+        android:onClick="simpleClick" />
+
+    <ImageButton
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:id="@+id/homeButton"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:contentDescription="home button"
+        android:clickable="true"
+        android:background="@drawable/button_home"
+        android:layout_marginBottom="15dp"
+        android:onClick="onHomeClick" />
+
+    <Button
+        android:layout_width="400dp"
+        android:layout_height="100dp"
+        android:text="No"
+        android:id="@+id/noButton"
+        android:enabled="true"
+        android:clickable="true"
+        android:textSize="50dp"
+        android:background="@drawable/button_no"
+        android:layout_alignParentEnd="false"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="170dp"
+        android:layout_marginBottom="15dp"
+        android:onClick="simpleClick" />
+
+</RelativeLayout>

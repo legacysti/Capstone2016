@@ -9,14 +9,11 @@ import android.net.Uri;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.text.Layout;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.RelativeLayout;
-import android.widget.Toast;
 
 import java.io.IOException;
 
@@ -39,20 +36,26 @@ public class categoryActivity extends AppCompatActivity {
     String video;
     SharedPreferences.Editor editor;
     SharedPreferences pref;
-    int max = -9999;
-    int leftTopVal;
-    int rightTopVal;
-    int leftMidVal;
-    int rightMidVal;
-    int leftBotVal;
-    int rightBotVal;
+//    int max = -9999;
+    static final int MAX_FAV_COUNT =1000;
+//    int leftTopVal;
+//    int rightTopVal;
+//    int leftMidVal;
+//    int rightMidVal;
+//    int leftBotVal;
+//    int rightBotVal;
+//    String[] catArray = new String[6];
+    int[] catValArray = new int[6];
     String catID;
     String faveButton = "";
     RelativeLayout rl;
+    boolean hasBeenActedOn = false;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        hasBeenActedOn = false;
         Bundle extras = getIntent().getExtras();
         if(extras != null){
             catID = extras.getString("catID");
@@ -102,10 +105,13 @@ public class categoryActivity extends AppCompatActivity {
         });
     }
 
+
     public void onHomeClick(View v) {
         Intent newActivity = new Intent(this, MainActivity.class);
         updateText(catID);
-        updateFaves(catID);
+        if (hasBeenActedOn) {
+            updateFaves(catID);
+        }
         startActivity(newActivity);
     }
 
@@ -130,13 +136,21 @@ public class categoryActivity extends AppCompatActivity {
             switch (view.getId()) {
                 case R.id.topLeftButton:
                     //set fave
-                    leftTopVal += 1;
-                    if(leftTopVal > max){
-                        max = leftTopVal;
-                        faveButton = pressed.getText().toString();
+//                    leftTopVal += 1;
+//                    if(leftTopVal > max){
+//                        max = leftTopVal;
+//                        faveButton = pressed.getText().toString();
+//                    }
+                    hasBeenActedOn = true;
+                    if(pref.getInt("leftTopVal"+catID, 0) < MAX_FAV_COUNT){
+                        editor.putInt("leftTopVal"+catID, pref.getInt("leftTopVal"+catID, 0)+1);
+                        editor.commit();
                     }
                     if(catID.equals("Fun")){
+                        makeCategoryValueArray(catID);
+                        setFavButton();
                         newActivity = new Intent(this, youtubeactivity.class);
+                        updateFaves(catID);
                         startActivity(newActivity);
                     }
                     else {
@@ -147,52 +161,96 @@ public class categoryActivity extends AppCompatActivity {
 
                 case R.id.topRightButton:
                     //set fave
-                    rightTopVal += 1;
-                    if(rightTopVal > max){
-                        max = rightTopVal;
-                        faveButton = pressed.getText().toString();
+//                    rightTopVal += 1;
+//                    if(rightTopVal > max){
+//                        max = rightTopVal;
+//                        faveButton = pressed.getText().toString();
+//                    }
+                    hasBeenActedOn = true;
+                    if(pref.getInt("rightTopVal"+catID, 0) < MAX_FAV_COUNT){
+                        editor.putInt("rightTopVal"+catID, pref.getInt("rightTopVal"+catID, 0)+1);
+                        editor.commit();
                     }
-                    imagePopUpIntent.putExtra("str", pressed.getText().toString());
-                    startActivity(imagePopUpIntent);
+                    if(catID.equals("Fun")){
+                        int i = pref.getInt("rightTopVal"+catID, 0);
+                        makeCategoryValueArray(catID);
+                        setFavButton();
+                        newActivity = new Intent(this, stamperactivity.class);
+                        updateFaves(catID);
+                        startActivity(newActivity);
+                    }
+                    else {
+                        imagePopUpIntent.putExtra("str", pressed.getText().toString());
+                        startActivity(imagePopUpIntent);
+                    }
                     break;
                 case R.id.midLeftButton:
                     //set fave
-                    leftMidVal += 1;
-                    if(leftMidVal > max){
-                        max = leftMidVal;
-                        faveButton = pressed.getText().toString();
+//                    leftMidVal += 1;
+//                    if(leftMidVal > max){
+//                        max = leftMidVal;
+//                        faveButton = pressed.getText().toString();
+//                    }
+                    hasBeenActedOn = true;
+                    if(pref.getInt("leftMidVal"+catID, 0) < MAX_FAV_COUNT){
+                        editor.putInt("leftMidVal"+catID, pref.getInt("leftMidVal"+catID, 0)+1);
+                        editor.commit();
                     }
-                    imagePopUpIntent.putExtra("str", pressed.getText().toString());
-                    startActivity(imagePopUpIntent);
+                    if(catID.equals("Fun")){
+                        makeCategoryValueArray(catID);
+                        setFavButton();
+                        newActivity = new Intent(this, guitaractivity.class);
+                        updateFaves(catID);
+                        startActivity(newActivity);
+                    }
+                    else {
+                        imagePopUpIntent.putExtra("str", pressed.getText().toString());
+                        startActivity(imagePopUpIntent);
+                    }
                     break;
                 case R.id.midRightButton:
                     //set fave
-                    rightMidVal += 1;
-                    if(rightMidVal > max){
-                        max = rightMidVal;
-                        faveButton = pressed.getText().toString();
+//                    rightMidVal += 1;
+//                    if(rightMidVal > max){
+//                        max = rightMidVal;
+//                        faveButton = pressed.getText().toString();
+//                    }
+                    hasBeenActedOn = true;
+                    if(pref.getInt("rightMidVal"+catID, 0) < MAX_FAV_COUNT){
+                        editor.putInt("rightMidVal"+catID, pref.getInt("rightMidVal"+catID, 0)+1);
+                        editor.commit();
                     }
                     imagePopUpIntent.putExtra("str", pressed.getText().toString());
                     startActivity(imagePopUpIntent);
                     break;
                 case R.id.botLeftButton:
                     //set fave
-                    leftBotVal += 1;
-                    if(leftBotVal > max){
-                        max = leftBotVal;
-                        faveButton = pressed.getText().toString();
-
+//                    leftBotVal += 1;
+//                    if(leftBotVal > max){
+//                        max = leftBotVal;
+//                        faveButton = pressed.getText().toString();
+//
+//                    }
+                    hasBeenActedOn = true;
+                    if(pref.getInt("leftBotVal"+catID, 0) < MAX_FAV_COUNT){
+                        editor.putInt("leftBotVal"+catID, pref.getInt("leftBotVal"+catID, 0)+1);
+                        editor.commit();
                     }
                     imagePopUpIntent.putExtra("str", pressed.getText().toString());
                     startActivity(imagePopUpIntent);
                     break;
                 case R.id.botRightButton:
                     //set fave
-                    rightBotVal += 1;
-                    if(rightBotVal > max){
-                        max = rightBotVal;
-                        faveButton = pressed.getText().toString();
-
+//                    rightBotVal += 1;
+//                    if(rightBotVal > max){
+//                        max = rightBotVal;
+//                        faveButton = pressed.getText().toString();
+//
+//                    }
+                    hasBeenActedOn = true;
+                    if(pref.getInt("rightBotVal"+catID, 0) < MAX_FAV_COUNT){
+                        editor.putInt("rightBotVal"+catID, pref.getInt("rightBotVal"+catID, 0)+1);
+                        editor.commit();
                     }
                     imagePopUpIntent.putExtra("str", pressed.getText().toString());
                     startActivity(imagePopUpIntent);
@@ -222,6 +280,9 @@ public class categoryActivity extends AppCompatActivity {
                 default:
 
             }
+            // check for fav buttons here
+            makeCategoryValueArray(catID);
+            setFavButton();
         }
         else if(parentalModeEnabled == true){
 
@@ -240,6 +301,49 @@ public class categoryActivity extends AppCompatActivity {
                 changeText(pressed);
             }
         }
+    }
+
+    private void setFavButton(){
+        int maxVal = 0;
+        int currFavIdx = 0;
+        for (int i=0; i<6; i++){
+            if (catValArray[i] > maxVal){
+                maxVal = catValArray[i];
+                currFavIdx = i;
+            }
+        }
+
+        switch (currFavIdx){
+            case 0:
+                faveButton = leftTop.getText().toString();
+                break;
+            case 1:
+                faveButton = rightTop.getText().toString();
+                break;
+            case 2:
+                faveButton = leftMid.getText().toString();
+                break;
+            case 3:
+                faveButton = rightMid.getText().toString();
+                break;
+            case 4:
+                faveButton = leftBot.getText().toString();
+                break;
+            case 5:
+                faveButton = rightBot.getText().toString();
+                break;
+            default:
+                break;
+        }
+    }
+
+    private void makeCategoryValueArray(String id) {
+        catValArray[0] = pref.getInt("leftTopVal"+id, 0);
+        catValArray[1] = pref.getInt("rightTopVal"+id, 0);
+        catValArray[2] = pref.getInt("leftMidVal"+id, 0);
+        catValArray[3] = pref.getInt("rightMidVal"+id, 0);
+        catValArray[4] = pref.getInt("leftBotVal"+id, 0);
+        catValArray[5] = pref.getInt("rightBotVal"+id, 0);
     }
 
     private void assignButtons(){
@@ -320,8 +424,8 @@ public class categoryActivity extends AppCompatActivity {
             editor.putString("midLeftTextFav", faveButton);
             editor.commit();
         }
-        if(id.equals("Fun")) {
-            editor.putString("midLeftTextFav", faveButton);
+        if(id.equals("Food")) {
+            editor.putString("topLeftTextFav", faveButton);
             editor.commit();
         }
     }

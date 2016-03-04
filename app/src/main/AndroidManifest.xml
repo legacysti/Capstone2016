@@ -10,7 +10,8 @@
         android:icon="@mipmap/ic_proj_abraham_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
-        android:theme="@style/Theme.AppCompat.Light.NoActionBar" >
+        android:theme="@style/Theme.AppCompat.Light.NoActionBar"
+        android:screenOrientation="landscape">
         <activity
             android:name=".MainActivity"
             android:label="@string/app_name"
@@ -22,9 +23,21 @@
             </intent-filter>
         </activity>
         <activity android:name=".ImagePopUp" android:theme="@style/myDialogTheme" />
-        <activity android:name=".categoryActivity" >
+        <activity
+            android:name=".categoryActivity"
+            android:screenOrientation="landscape" >
         </activity>
-        <activity android:name=".youtubeactivity" >
+        <activity
+            android:name=".youtubeactivity"
+            android:screenOrientation="landscape">
+        </activity>
+        <activity
+            android:name=".guitaractivity"
+            android:screenOrientation="landscape">
+        </activity>
+        <activity
+            android:name=".stamperactivity"
+            android:screenOrientation="landscape">
         </activity>
     </application>
 

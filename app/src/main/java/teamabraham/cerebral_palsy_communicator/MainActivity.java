@@ -48,42 +48,93 @@ public class MainActivity extends AppCompatActivity{
         editor = pref.edit();
         hasStarted = pref.getBoolean("hasStarted", false);
         if(!hasStarted){
+            // Text to be set to a button for each category
             editor.putString("topLeftTextFood", "FuFu");
             editor.putString("topRightTextFood", "Banana");
             editor.putString("midLeftTextFood", "Pizza");
             editor.putString("midRightTextFood", "Drink");
             editor.putString("botLeftTextFood", "Pineapple");
             editor.putString("botRightTextFood", "Casava");
+
             editor.putString("topLeftTextAct", "Go Outside");
             editor.putString("topRightTextAct", "Listen to Music");
             editor.putString("midLeftTextAct", "Watch TV");
             editor.putString("midRightTextAct", "Watch Netflix");
             editor.putString("botLeftTextAct", "Go Somewhere");
             editor.putString("botRightTextAct", "Go Inside");
-            editor.putString("topLeftTextEmo", "I don't Care");
-            editor.putString("topRightTextEmo", "Sad");
-            editor.putString("midLeftTextEmo", "Aggravated");
-            editor.putString("midRightTextEmo", "Angry");
-            editor.putString("botLeftTextEmo", "Bored");
-            editor.putString("botRightTextEmo", "Happy");
+
             editor.putString("topLeftTextPer", "I Feel Sick");
             editor.putString("topRightTextPer", "I'm Tired");
             editor.putString("midLeftTextPer", "I'm Uncomfortable");
             editor.putString("midRightTextPer", "Need to go to the Bathroom");
             editor.putString("botLeftTextPer", "I'm OK");
             editor.putString("botRightTextPer", "Need to be changed");
+
             editor.putString("topLeftTextFun", "YouTube");
             editor.putString("topRightTextFun", "Stamper");
-            editor.putString("midLeftTextFun", "");
+            editor.putString("midLeftTextFun", "Guitar");
             editor.putString("midRightTextFun", "");
             editor.putString("botLeftTextFun", "");
             editor.putString("botRightTextFun", "");
+
+            editor.putString("topLeftTextEmo", "I don't Care");
+            editor.putString("topRightTextEmo", "Sad");
+            editor.putString("midLeftTextEmo", "Aggravated");
+            editor.putString("midRightTextEmo", "Angry");
+            editor.putString("botLeftTextEmo", "Bored");
+            editor.putString("botRightTextEmo", "Happy");
+
             editor.putString("topLeftTextFav", "");
             editor.putString("topRightTextFav", "");
             editor.putString("midLeftTextFav", "");
             editor.putString("midRightTextFav", "");
             editor.putString("botLeftTextFav", "");
-            editor.putString("botRightTextFav", "");
+
+
+
+            // The click-count of each button position in each category
+            editor.putInt("leftTopValFood", 0);
+            editor.putInt("rightTopValFood", 0);
+            editor.putInt("leftMidValFood", 0);
+            editor.putInt("rightMidValFood", 0);
+            editor.putInt("leftBotValFood", 0);
+            editor.putInt("rightBotValFood", 0);
+
+            editor.putInt("leftTopValAct", 0);
+            editor.putInt("rightTopValAct", 0);
+            editor.putInt("leftMidValAct", 0);
+            editor.putInt("rightMidValAct", 0);
+            editor.putInt("leftBotValAct", 0);
+            editor.putInt("rightBotValAct", 0);
+
+            editor.putInt("leftTopValPer", 0);
+            editor.putInt("rightTopValPer", 0);
+            editor.putInt("leftMidValPer", 0);
+            editor.putInt("rightMidValPer", 0);
+            editor.putInt("leftBotValPer", 0);
+            editor.putInt("rightBotValPer", 0);
+
+            editor.putInt("leftTopValFun", 0);
+            editor.putInt("rightTopValFun", 0);
+            editor.putInt("leftMidValFun", 0);
+            editor.putInt("rightMidValFun", 0);
+            editor.putInt("leftBotValFun", 0);
+            editor.putInt("rightBotValFun", 0);
+
+            editor.putInt("leftTopValEmo", 0);
+            editor.putInt("rightTopValEmo", 0);
+            editor.putInt("leftMidValEmo", 0);
+            editor.putInt("rightMidValEmo", 0);
+            editor.putInt("leftBotValEmo", 0);
+            editor.putInt("rightBotValEmo", 0);
+
+            editor.putInt("leftTopValFav", 0);
+            editor.putInt("rightTopValFav", 0);
+            editor.putInt("leftMidValFav", 0);
+            editor.putInt("rightMidValFav", 0);
+            editor.putInt("leftBotValFav", 0);
+            editor.putInt("rightBotValFav", 0);
+
             hasStarted = true;
             editor.putBoolean("hasStarted", hasStarted);
             editor.commit();
