@@ -148,46 +148,46 @@ public class MainActivity extends AppCompatActivity{
         yesButton = (Button)findViewById(R.id.yesButton);
         noButton = (Button)findViewById(R.id.noButton);
 
-        final ImageButton parentalMode = (ImageButton) findViewById(R.id.parentalModeButton);
+//        final ImageButton parentalMode = (ImageButton) findViewById(R.id.parentalModeButton);
         parentalModeEnabled = false;
         thisActivity = this;
         
-        parentalMode.setOnLongClickListener(new View.OnLongClickListener() {
-            @Override
-            public boolean onLongClick(View v) {
-                final AlertDialog.Builder builder = new AlertDialog.Builder(thisActivity);
-                if(!parentalModeEnabled) {
-                    builder.setTitle("Enter Parental Mode?");
-                }
-                else if(parentalModeEnabled){
-                    builder.setTitle("Exit Parental Mode?");
-                }
-
-
-                builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        parentalModeEnabled = !parentalModeEnabled;
-                        if(parentalModeEnabled) {
-                            parentalMode.setImageResource(R.drawable.button_parental_mode_pressed);
-                        }
-                        else{
-                            parentalMode.setImageResource(R.drawable.button_parental_mode_unpressed);
-                        }
-                    }
-                });
-
-                builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        dialog.cancel();
-                    }
-                });
-
-                builder.show();
-                return true;
-            }
-        });
+//        parentalMode.setOnLongClickListener(new View.OnLongClickListener() {
+//            @Override
+//            public boolean onLongClick(View v) {
+//                final AlertDialog.Builder builder = new AlertDialog.Builder(thisActivity);
+//                if(!parentalModeEnabled) {
+//                    builder.setTitle("Enter Parental Mode?");
+//                }
+//                else if(parentalModeEnabled){
+//                    builder.setTitle("Exit Parental Mode?");
+//                }
+//
+//
+//                builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+//                    @Override
+//                    public void onClick(DialogInterface dialog, int which) {
+//                        parentalModeEnabled = !parentalModeEnabled;
+//                        if(parentalModeEnabled) {
+//                            parentalMode.setImageResource(R.drawable.button_parental_mode_pressed);
+//                        }
+//                        else{
+//                            parentalMode.setImageResource(R.drawable.button_parental_mode_unpressed);
+//                        }
+//                    }
+//                });
+//
+//                builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+//                    @Override
+//                    public void onClick(DialogInterface dialog, int which) {
+//                        dialog.cancel();
+//                    }
+//                });
+//
+//                builder.show();
+//                return true;
+//            }
+//        });
     }
 
     @Override
